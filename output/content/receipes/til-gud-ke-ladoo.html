@@ -1,38 +1,573 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Til-Gud Ladoo Recipe — Sesame &amp; Jaggery Laddoos for Makar Sankranti</title>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
-	<head id="ctl00_head1"><title>
-	Til gud ke ladoo receipe for Sankranti
+  <meta content="Til aur gud ke ladoo (laddoo): a classic Sankranti sweet made with roasted sesame seeds, jaggery, coconut and cardamom. Step-by-step recipe, tips, and the cultural significance of til and gud during Makar Sankranti." name="description"/>
+  <meta content="til gud ladoo, til gur laddoo, sesame jaggery ladoo, sankranti sweets, makar sankranti recipe, tilgul, til gud ke laddoo, gajak, chikki" name="keywords"/>
 
-</title><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="description" /><meta name="keywords" /><link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700|Open+Sans+Condensed:700" rel="stylesheet" />
-		<script src="https://pictures.sankranti.net/site4/js/jquery-1.8.3.min.js"></script>
-		<script src="https://pictures.sankranti.net/site4/css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none&amp;mobileUI.titleBarOverlaid=1"></script>
-		<noscript>
-			<link rel="stylesheet" href="https://pictures.sankranti.net/site4/css/5grid/core.css" /><link rel="stylesheet" href="https://pictures.sankranti.net/site4/css/5grid/core-desktop.css" /><link rel="stylesheet" href="https://pictures.sankranti.net/site4/css/5grid/core-1200px.css" /><link rel="stylesheet" href="https://pictures.sankranti.net/site4/css/5grid/core-noscript.css" /><link rel="stylesheet" href="https://pictures.sankranti.net/site4/css/style.css" /><link rel="stylesheet" href="https://pictures.sankranti.net/site4/css/style-desktop.css" />
-		</noscript>
-		<!--[if lte IE 9]><link rel="stylesheet" href="https://pictures.sankranti.net/site4/css/ie9.css" /><![endif]-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="https://pictures.sankranti.net/site4/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 7]><link rel="stylesheet" href="https://pictures.sankranti.net/site4/css/ie7.css" /><![endif]-->
-    </head>
-	
-	<body >
-          <div id="fb-root"></div>
-<script>(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=1573760292911899";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-		<!-- Header Wrapper -->
-        <!-- Header -->
-			
-									
-									<!-- Nav -->
-										<nav id="nav" class="mobileUI-site-nav">
-											<ul>
+  <!-- Theme base (Tailwind + fonts + icons) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&amp;family=Gotu&amp;display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+
+  <style>
+    body { font-family: 'Poppins', sans-serif; background-color:#FFFAF0; background-image: linear-gradient(to bottom, #FFFAF0 0%, #FFF5E1 100%); }
+    h1, h2, h3, .headline { font-family: 'Gotu', serif; }
+    .sun-gradient { background: linear-gradient(135deg, #FF9966 0%, #FF5E62 100%); }
+    .kite-pattern { background-color:#ffffff; opacity:0.12;
+      background-image: radial-gradient(#FF9966 0.6px, transparent 0.6px),
+                        radial-gradient(#FF9966 0.6px, #ffffff 0.6px);
+      background-size: 22px 22px; background-position: 0 0, 11px 11px;
+    }
+    .card-hover { transition: all .25s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(255,100,50,.14); border-color:#FDBA74; }
+    .kbd { border:1px solid #e5e7eb; border-bottom-width:2px; padding:.1rem .35rem; border-radius:.5rem; background:#fff; font-size:.75rem; }
+    .pill { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); }
+    @media print { nav.sticky, .no-print { display:none !important; } body { background:white !important; } }
+  </style>
+</head>
+
+<body class="text-gray-800 min-h-screen flex flex-col">
+
+  <!-- Top strip -->
+  <div class="bg-orange-50 border-b border-orange-100">
+    <div class="container mx-auto px-4 py-2 text-sm text-orange-900 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-sun text-orange-600"></i>
+        <span><strong>Til–Gud Ladoo</strong> — sesame &amp; jaggery sweetness for Sankranti</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <a class="hover:underline" href="#recipe">Recipe</a>
+        <span class="text-orange-200">|</span>
+        <a class="hover:underline" href="#tips">Tips</a>
+        <span class="text-orange-200">|</span>
+        <a class="hover:underline" href="#significance">Significance</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <header class="relative sun-gradient text-white overflow-hidden shadow-lg" id="top">
+    <div class="absolute inset-0 kite-pattern"></div>
+    <div class="container mx-auto px-6 py-12 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 text-center lg:text-left">
+          <div class="inline-flex items-center gap-3 pill backdrop-blur-sm px-4 py-2 rounded-full mb-5">
+            <i class="fa-solid fa-kite text-2xl text-yellow-200"></i>
+            <span class="text-sm font-semibold tracking-wide">Recipe • Winter sweet • Sankranti</span>
+          </div>
+
+          <h1 class="headline text-4xl md:text-5xl font-bold leading-tight mb-4">
+            Til aur Gud ke Ladoo
+          </h1>
+
+          <p class="text-lg md:text-xl font-light opacity-90 max-w-3xl mx-auto lg:mx-0">
+            <strong>Til–Gud Ladoo</strong> (sesame–jaggery laddoos) are one of the most loved sweets made around
+            <strong>Makar Sankranti</strong>. They’re simple, nourishing, and perfect for mid-January—when sesame and jaggery
+            are traditional “warming” foods and sharing sweets is part of the festival spirit. fileciteturn8file0
+          </p>
+
+          <div class="mt-7 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start no-print">
+            <a class="inline-flex items-center justify-center gap-2 bg-white text-orange-700 px-5 py-3 rounded-xl font-semibold shadow-sm hover:bg-orange-50 transition" href="#recipe">
+              <i class="fa-solid fa-utensils"></i> Jump to Recipe
+            </a>
+            <a class="inline-flex items-center justify-center gap-2 bg-white/15 border border-white/30 text-white px-5 py-3 rounded-xl font-semibold hover:bg-white/20 transition" href="#cards">
+              <i class="fa-solid fa-paper-plane"></i> Cards / Messages
+            </a>
+          </div>
+
+          <div class="mt-8 grid sm:grid-cols-3 gap-3 text-left">
+            <div class="bg-white/10 border border-white/20 rounded-2xl p-4">
+              <div class="text-xs uppercase tracking-wide opacity-90">Main</div>
+              <div class="mt-1 font-semibold">Roasted sesame (til)</div>
+            </div>
+            <div class="bg-white/10 border border-white/20 rounded-2xl p-4">
+              <div class="text-xs uppercase tracking-wide opacity-90">Sweetener</div>
+              <div class="mt-1 font-semibold">Jaggery (gud)</div>
+            </div>
+            <div class="bg-white/10 border border-white/20 rounded-2xl p-4">
+              <div class="text-xs uppercase tracking-wide opacity-90">Aroma</div>
+              <div class="mt-1 font-semibold">Cardamom + coconut</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="bg-white/10 border border-white/20 rounded-3xl p-3 shadow-lg">
+            <div class="rounded-2xl w-full h-72 flex items-center justify-center bg-white/10">
+              <div class="text-center px-6">
+                <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/15 mb-3">
+                  <i class="fa-solid fa-cookie-bite text-3xl text-yellow-200"></i>
+                </div>
+                <div class="text-xl font-semibold">Quick snapshot</div>
+                <div class="text-sm opacity-90 mt-2">Roast → grind → mix → roll</div>
+
+                <div class="mt-4 grid grid-cols-2 gap-2 text-left text-sm">
+                  <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/20">
+                    <div class="font-semibold">Serves</div>
+                    <div class="opacity-90">10–12 ladoos</div>
+                  </div>
+                  <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/20">
+                    <div class="font-semibold">Time</div>
+                    <div class="opacity-90">~20–25 min</div>
+                  </div>
+                  <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/20">
+                    <div class="font-semibold">Storage</div>
+                    <div class="opacity-90">Airtight jar</div>
+                  </div>
+                  <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/20">
+                    <div class="font-semibold">Perfect for</div>
+                    <div class="opacity-90">Winter evenings</div>
+                  </div>
+                </div>
+
+                <div class="mt-4 text-xs opacity-80">
+                  Recipe preserved and enhanced from the original til-gud-ke-ladoo page. fileciteturn8file0
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <p class="text-sm opacity-90">Tip: If the mixture feels dry, warm it slightly so jaggery binds better.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky nav -->
+  <nav class="bg-white/80 backdrop-blur border-b border-orange-100 sticky top-0 z-40 no-print">
+    <div class="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+      <a class="font-bold text-orange-800 flex items-center gap-2" href="#top">
+        <span class="inline-flex w-9 h-9 items-center justify-center rounded-xl bg-orange-100 text-orange-700">
+          <i class="fa-solid fa-sun"></i>
+        </span>
+        Til–Gud Ladoo
+      </a>
+
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-sm font-semibold">
+        <a class="px-3 py-2 rounded-lg hover:bg-orange-50 text-orange-800" href="#recipe">Recipe</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-orange-50 text-orange-800" href="#tips">Tips</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-orange-50 text-orange-800" href="#significance">Significance</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-orange-50 text-orange-800" href="#cards">Cards</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-orange-50 text-orange-800" href="#related">Related</a>
+      </div>
+
+      <div class="text-sm text-gray-600">
+        Quick: <span class="kbd">Til</span> <span class="kbd">Gud</span> <span class="kbd">Sankranti</span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container mx-auto px-4 py-10 flex-grow">
+
+    <!-- Recipe -->
+    <section class="mb-8" id="recipe">
+      <div class="bg-white border border-orange-100 rounded-2xl p-6">
+        <div class="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-orange-900 border-l-4 border-orange-500 pl-3">
+              Til–Gud Ladoo recipe
+            </h2>
+            <p class="mt-2 text-sm text-gray-600">Simple ingredients, big festive taste.</p>
+          </div>
+          <div class="text-sm font-semibold text-orange-900">
+            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-orange-50 border border-orange-100">
+              <i class="fa-solid fa-clipboard-list text-orange-600"></i>
+              Level: Easy • No baking
+            </span>
+          </div>
+        </div>
+
+        <div class="mt-5 grid lg:grid-cols-2 gap-4">
+          <div class="bg-orange-50 border border-orange-100 rounded-2xl p-5">
+            <div class="font-semibold text-orange-900"><i class="fa-solid fa-basket-shopping mr-2 text-orange-500"></i>Ingredients</div>
+            <ul class="mt-3 text-sm text-gray-700 list-disc list-inside space-y-1">
+              <li><strong>1½ cups</strong> sesame seeds (til), lightly roasted</li>
+              <li><strong>1 cup</strong> jaggery (gud), chopped</li>
+              <li><strong>½ cup</strong> grated dry coconut</li>
+              <li><strong>¼ tsp</strong> green cardamom powder</li>
+            </ul>
+            <p class="mt-3 text-xs text-gray-500">
+              Optional: a spoon of ghee (for aroma), chopped peanuts, or a pinch of dry ginger powder (saunth) for extra warmth.
+            </p>
+          </div>
+
+          <div class="bg-white border border-orange-100 rounded-2xl p-5">
+            <div class="font-semibold text-orange-900"><i class="fa-solid fa-fire-burner mr-2 text-orange-500"></i>Directions</div>
+            <ol class="mt-3 text-sm text-gray-700 list-decimal list-inside space-y-2">
+              <li><strong>Roast til</strong> on low flame until fragrant (do not burn). Cool completely.</li>
+              <li><strong>Coarsely grind</strong> sesame and jaggery together using a mixer or mortar &amp; pestle.</li>
+              <li>Transfer to a plate. Add coconut and cardamom powder. Mix well.</li>
+              <li>Divide into equal portions. Shape into lemon-sized ladoos by pressing firmly.</li>
+              <li>Store in an airtight jar. Enjoy over the next 1–2 weeks.</li>
+            </ol>
+
+            <div class="mt-4 bg-orange-50 border border-orange-100 rounded-xl p-3 text-sm text-gray-700">
+              <strong>Shortcut:</strong> If the mixture isn’t binding, warm it gently for 10–15 seconds on a low pan, then roll quickly.
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 bg-white border border-orange-100 rounded-2xl p-5">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0">
+              <i class="fa-solid fa-quote-left text-orange-600"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-orange-900">Original recipe (preserved)</div>
+              <p class="text-sm text-gray-700 mt-1">
+                Sesame seeds (til) lightly roasted 1 1/2 cups, jaggery chopped 1 cup, grated dry coconut 1/2 cup,
+                green cardamom powder 1/4 tsp. Grind til and jaggery to a coarse mixture, add coconut + cardamom,
+                shape lemon-sized ladoos, store airtight. fileciteturn8file0
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tips -->
+    <section class="mb-8" id="tips">
+      <div class="bg-white border border-orange-100 rounded-2xl p-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-orange-900 border-l-4 border-orange-500 pl-3">Tips for perfect ladoos</h2>
+        <p class="mt-2 text-sm text-gray-600">Small details that make big difference.</p>
+
+        <div class="mt-5 grid lg:grid-cols-3 gap-4">
+          <div class="bg-white border border-orange-100 rounded-2xl p-5 card-hover">
+            <div class="font-semibold text-orange-900"><i class="fa-solid fa-pan-frying mr-2 text-orange-500"></i>Roast gently</div>
+            <p class="text-sm text-gray-700 mt-2">
+              Roast sesame on low flame until it smells nutty. Over-roasting makes it bitter.
+            </p>
+          </div>
+
+          <div class="bg-white border border-orange-100 rounded-2xl p-5 card-hover">
+            <div class="font-semibold text-orange-900"><i class="fa-solid fa-blender mr-2 text-orange-500"></i>Keep it coarse</div>
+            <p class="text-sm text-gray-700 mt-2">
+              Coarse grinding gives the best bite. Too fine can feel pasty.
+            </p>
+          </div>
+
+          <div class="bg-white border border-orange-100 rounded-2xl p-5 card-hover">
+            <div class="font-semibold text-orange-900"><i class="fa-solid fa-hand-fist mr-2 text-orange-500"></i>Roll while warm</div>
+            <p class="text-sm text-gray-700 mt-2">
+              If jaggery is cold and not binding, warm the mixture slightly and roll quickly.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-6 bg-orange-50 border border-orange-100 rounded-2xl p-5">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-2xl bg-white border border-orange-100 flex items-center justify-center shrink-0">
+              <i class="fa-solid fa-circle-info text-orange-600"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-orange-900">Serving ideas</div>
+              <p class="text-sm text-gray-700 mt-1">
+                Serve with hot chai, or add chopped peanuts for a crunchy variation. For a festive platter,
+                pair with <strong>gajak</strong>, <strong>chikki</strong>, or <strong>ganne ki kheer</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Significance -->
+    <section class="mb-8" id="significance">
+      <div class="bg-white border border-orange-100 rounded-2xl p-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-orange-900 border-l-4 border-orange-500 pl-3">
+          Why til and gud are special on Sankranti
+        </h2>
+        <p class="mt-2 text-sm text-gray-600">
+          Til (sesame) and gud (jaggery) are not just ingredients—they’re part of the festival meaning.
+        </p>
+
+        <div class="mt-5 grid lg:grid-cols-3 gap-4">
+          <div class="bg-white border border-orange-100 rounded-2xl p-5 card-hover">
+            <div class="font-semibold text-orange-900"><i class="fa-solid fa-snowflake mr-2 text-orange-500"></i>Winter warmth</div>
+            <p class="text-sm text-gray-700 mt-2">
+              Sesame and jaggery are popular winter foods—energy-dense and comforting for the cold mid-January season.
+            </p>
+          </div>
+
+          <div class="bg-white border border-orange-100 rounded-2xl p-5 card-hover">
+            <div class="font-semibold text-orange-900"><i class="fa-solid fa-people-group mr-2 text-orange-500"></i>Sharing sweetness</div>
+            <p class="text-sm text-gray-700 mt-2">
+              Many communities exchange til–gud sweets as a friendly gesture—sharing sweetness and good wishes.
+            </p>
+          </div>
+
+          <div class="bg-white border border-orange-100 rounded-2xl p-5 card-hover">
+            <div class="font-semibold text-orange-900"><i class="fa-solid fa-wheat-awn mr-2 text-orange-500"></i>Harvest gratitude</div>
+            <p class="text-sm text-gray-700 mt-2">
+              Sankranti is harvest time. Sweets made from seasonal crops (sesame, sugarcane/jaggery) celebrate abundance.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-6 bg-orange-50 border border-orange-100 rounded-2xl p-5">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-2xl bg-white border border-orange-100 flex items-center justify-center shrink-0">
+              <i class="fa-solid fa-message text-orange-600"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-orange-900">A classic Sankranti line</div>
+              <p class="text-sm text-gray-700 mt-1">
+                <strong>“Til-gul ghya, god god bola.”</strong> — Take sesame-jaggery and speak sweetly.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Cards -->
+    <section class="mb-8" id="cards">
+      <div class="bg-white border border-orange-100 rounded-2xl p-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-orange-900 border-l-4 border-orange-500 pl-3">Send Sankranti cards &amp; messages</h2>
+        <p class="mt-2 text-sm text-gray-600">Kept consistent across the themed Sankranti pages. fileciteturn8file0</p>
+
+        <div class="mt-5 grid md:grid-cols-2 gap-4">
+          <a class="block bg-white border border-orange-100 rounded-2xl p-5 card-hover" href="https://www.sankranti.net/cards/">
+            <div class="flex items-start gap-3">
+              <div class="w-11 h-11 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-image text-orange-600"></i>
+              </div>
+              <div>
+                <div class="font-semibold text-orange-900">Welcome Sankranti</div>
+                <p class="text-sm text-gray-700 mt-1">Traditional cards for Makar Sankranti.</p>
+                <div class="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-orange-700">
+                  Open Cards <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a class="block bg-white border border-orange-100 rounded-2xl p-5 card-hover" href="https://www.sankranti.net/messages/pictures.html">
+            <div class="flex items-start gap-3">
+              <div class="w-11 h-11 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-paper-plane text-orange-600"></i>
+              </div>
+              <div>
+                <div class="font-semibold text-orange-900">Send Cards</div>
+                <p class="text-sm text-gray-700 mt-1">Modern art card showing spirit of Sankranti.</p>
+                <div class="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-orange-700">
+                  Open Messages <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="mt-5 bg-orange-50 border border-orange-100 rounded-2xl p-5">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="text-sm text-gray-700">
+              Caption idea: <span class="kbd">Til–Gud for sweet words!</span> <span class="kbd">🍯</span> <span class="kbd">🌾</span> <span class="kbd">☀️</span>
+            </div>
+            <div class="flex gap-2">
+              <a class="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-semibold transition" href="https://www.sankranti.net/cards/">Cards</a>
+              <a class="px-4 py-2 rounded-xl bg-orange-50 hover:bg-orange-100 text-orange-800 font-semibold transition border border-orange-100" href="https://www.sankranti.net/messages/pictures.html">Messages</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related -->
+    <section class="mb-2" id="related">
+      <div class="bg-white border border-orange-100 rounded-2xl p-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-orange-900 border-l-4 border-orange-500 pl-3">Related recipes</h2>
+        <p class="mt-2 text-sm text-gray-600">Links preserved from the original page’s “Related Articles”. fileciteturn8file0</p>
+
+        <div class="mt-5 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <a class="block bg-white border border-orange-100 rounded-2xl p-5 card-hover" href="https://www.sankranti.net/receipes/coconut-ladoo.html">
+            <div class="font-semibold text-orange-900">Coconut ladoo</div>
+            <p class="text-sm text-gray-700 mt-1">Quick, festive, and easy.</p>
+          </a>
+          <a class="block bg-white border border-orange-100 rounded-2xl p-5 card-hover" href="https://www.sankranti.net/receipes/ganee-ki-kheer.html">
+            <div class="font-semibold text-orange-900">Ganne ki kheer</div>
+            <p class="text-sm text-gray-700 mt-1">Sugarcane dessert for Sankranti.</p>
+          </a>
+          <a class="block bg-orange-50 border border-orange-100 rounded-2xl p-5 card-hover" href="https://www.sankranti.net/receipes/">
+            <div class="font-semibold text-orange-900">More recipes</div>
+            <p class="text-sm text-gray-700 mt-1">Explore Sankranti sweets and snacks.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <html><head></head><body><footer class="bg-gray-800 text-gray-300">
+  <div class="container mx-auto px-6 py-12 lg:px-8">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+      
+      <div>
+        <h5 class="text-lg font-semibold text-white mb-4">Makarsankranti Uttarayan</h5>
+        <ul class="space-y-2">
+
+
+
+
+		
+
+
+	<li>								
+		<a href="https://www.sankranti.net/3-days-of-sankranti-and-pongal-celebration.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl01_title">3-days-of-sankranti-and-pongal-celebration</a>
+            </li>	
+
+
+
+
+
 												
-                    
+		<li>								
+		<a href="https://www.sankranti.net/different-names-of-sankranti.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl02_title">Different-names-of-sankranti</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/image.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl03_title">Image</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/important-sankrantis.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl04_title">Important-sankrantis</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/index2.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl05_title">Index2</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/information.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl06_title">Information</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/khichdi-purv.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl07_title">Khichdi-purv</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/lohri.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl08_title">Lohri</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/magh-bihu.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl09_title">Magh-bihu</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/makarsankranti-information.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl10_title">Makarsankranti-information</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/pongal.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl11_title">Pongal</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/sankranti-vs-makarsankranti.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl12_title">Sankranti-vs-makarsankranti</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/sitemap.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl13_title">Sitemap</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/start-of-spring.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl14_title">Start-of-spring</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/what-is-pedda-festival.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl15_title">What-is-pedda-festival</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/what-is-uttarayaana.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl16_title">What-is-uttarayaana</a>
+            </li>	
+
+
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="text-lg font-semibold text-white mb-4">Stories of Makarsankrnti</h5>
+        <ul class="space-y-2">
+
+	
+    
 
     
 
@@ -40,7 +575,7 @@
 
 												
 		<li>								
-		<a id="ctl00_articles_RepLinks_ctl01_title" href="https://www.sankranti.net/">Home</a>
+		<a href="https://www.sankranti.net/wishes/assamese.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl01_title">Assamese</a>
             </li>	
 
 
@@ -49,7 +584,7 @@
 
 												
 		<li>								
-		<a id="ctl00_articles_RepLinks_ctl02_title" href="https://www.sankranti.net/cards/">Cards</a>
+		<a href="https://www.sankranti.net/wishes/bengali.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl02_title">Bengali</a>
             </li>	
 
 
@@ -58,7 +593,7 @@
 
 												
 		<li>								
-		<a id="ctl00_articles_RepLinks_ctl03_title" href="https://www.sankranti.net/essay/">Essay</a>
+		<a href="https://www.sankranti.net/wishes/bhojpuri.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl03_title">Bhojpuri</a>
             </li>	
 
 
@@ -67,7 +602,7 @@
 
 												
 		<li>								
-		<a id="ctl00_articles_RepLinks_ctl04_title" href="https://www.sankranti.net/harvest-festivals/">Harvest festivals</a>
+		<a href="https://www.sankranti.net/wishes/bihari.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl04_title">Bihari</a>
             </li>	
 
 
@@ -76,7 +611,7 @@
 
 												
 		<li>								
-		<a id="ctl00_articles_RepLinks_ctl05_title" href="https://www.sankranti.net/Hindu-festivals/">Hindu festivals</a>
+		<a href="https://www.sankranti.net/wishes/english.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl05_title">English</a>
             </li>	
 
 
@@ -85,7 +620,7 @@
 
 												
 		<li>								
-		<a id="ctl00_articles_RepLinks_ctl06_title" href="https://www.sankranti.net/messages/">Messages</a>
+		<a href="https://www.sankranti.net/wishes/gujarati.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl06_title">Gujarati</a>
             </li>	
 
 
@@ -94,7 +629,7 @@
 
 												
 		<li>								
-		<a id="ctl00_articles_RepLinks_ctl07_title" href="https://www.sankranti.net/pilgrimages/">Pilgrimages</a>
+		<a href="https://www.sankranti.net/wishes/hindi.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl07_title">Hindi</a>
             </li>	
 
 
@@ -103,7 +638,7 @@
 
 												
 		<li>								
-		<a id="ctl00_articles_RepLinks_ctl08_title" href="https://www.sankranti.net/receipes/">Receipes</a>
+		<a href="https://www.sankranti.net/wishes/kannada.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl08_title">Kannada</a>
             </li>	
 
 
@@ -112,7 +647,7 @@
 
 												
 		<li>								
-		<a id="ctl00_articles_RepLinks_ctl09_title" href="https://www.sankranti.net/tradition/">Tradition</a>
+		<a href="https://www.sankranti.net/wishes/kashmiri.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl09_title">Kashmiri</a>
             </li>	
 
 
@@ -121,187 +656,8 @@
 
 												
 		<li>								
-		<a id="ctl00_articles_RepLinks_ctl10_title" href="https://www.sankranti.net/wishes/">Wishes</a>
+		<a href="https://www.sankranti.net/wishes/makarsankranti-play-script.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl10_title">Makarsankranti-play-script</a>
             </li>	
-
-
-
-
-
-
-
-             
- 
- 
- 
-
-						<h1> <a id="ctl00_topheader" class="mobileUI-site-name">Til gud ke ladoo receipe for Sankranti
-</a></h1>
-                                               
-											</ul>
-										</nav>
-								
-								
-		
-		
-
-
-   <!-- Main Wrapper -->
-			
-		 <div id="main-wrapper">
-				<div id="main" class="5grid-layout">
-					<div class="row">
-						<div class="9u mobileUI-main-content">
-							<div class="content content-left">
-							
-								<!-- Content -->
-						
-									<article class="is-page-content">
-	
-										<header>
-											
-                                             <h3><span id="ctl00_ContentPlaceHolder1_title">Til gud ke ladoo receipe for Sankranti
-</span></h3>
-											
-												<span class="byline"> <span id="ctl00_ContentPlaceHolder1_metadesc"></span></span>	
-										</header>
-
-                                            <table id="ctl00_ContentPlaceHolder1_RepDetails" cellspacing="0" border="0">
-	<tr>
-		<td>
-
-
-</td>
-	</tr><tr>
-		<td>
-
-
-					
-	<section>
-   <span id="ctl00_ContentPlaceHolder1_RepDetails_ctl01_labeltext"><font color="Black" size="4">Til Aur Gur Ke Ladoo<br/><br/><br/>
-<br/><br/><br/>
-<br/><br/><br/>
-Ingredients:<br/><br/><br/>
-<br/><br/><br/>
-Sesame seeds or til lightly roasted 1 1/2 cups<br/><br/><br/>
-Jaggery chopped 1 cup<br/><br/><br/>
-Grated Dry coconut 1/2 cup<br/><br/><br/>
-Green cardamom powder 1/4 teaspoon<br/><br/><br/>
-<br/><br/><br/>
-Directions:<br/><br/><br/>
-Grind sesame seeds and jaggery to a coarse mixture using a mixer or a mortar and pestle.<br/><br/><br/>
-Transfer the mixture onto a plate, add dried coconut and green cardamom powder and mix well.<br/><br/><br/>
-Divide this mixture into equal portions and shape into lemon-sized ladoos and Store in airtight jars.<br/><br/><br/>
-<br/><br/><br/>
-<br/><br/><br/>
-<br/><br/><br/></font></span>
-		</section>
-</td>
-	</tr><tr>
-		<td>
-
-
-					
-	<section>
-   <span id="ctl00_ContentPlaceHolder1_RepDetails_ctl02_labeltext"><font color="Black" size="4">								<div class="row">
-									<div class="4u">
-										<!-- Box -->
-										<section class="box box-feature">
-											<a href="https://www.sankranti.net/cards/" class="image image-full"><img src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos400/4.jpg" alt="" /></a>
-											<div class="inner">
-												<header>
-													<h3>Welcome Sankranti</h3>
-												</header>
-
-												<p>
-													Traditional cards for Makar Sankranti
-												</p>
-											</div>
-
-										</section>
-									</div>
-									<div class="4u">
-										<!-- Box -->
-										<section class="box box-feature">
-											<a href="https://www.sankranti.net/messages/pictures.html" class="image image-full"><img src="https://storage.googleapis.com/create-website/photos-source/photos400/card-00834.png" alt="" /></a>
-											<div class="inner">
-
-												<header>
-													<h3>Send Cards</h3>
-												</header>
-												<p>
-													Modern art card showing spirit of Sankranti
-												</p>
-
-											</div>
-
-										</section>
-									</div>
-								</div>
-
-
-
-</font></span>
-		</section>
-</td>
-	</tr><tr>
-		<td>
-
-
-
-</td>
-	</tr>
-</table>
-
-								
-										<br />
-                                         <br /><br />
-                            <div class="fb-like" data-href="https://www.sankranti.net/" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
-	
-                            <br />
-										
-							      
-                                   
-
-				<span id="ctl00_ContentPlaceHolder1_actions_ad"><div class="actions">
-
-													<a href="https://www.sankranti.net/cards/" class="button button-big">Cards</a>
-
-													<a href="https://www.sankranti.net/messages/pictures.html" class="button button-alt button-big">Messages</a>
-
-</div></span>											
-															</article>
-								</div>
-
-						</div>
-							<div class="3u">
-						
-							<!-- Sidebar -->
-								<div id="sidebar">
-
-									<section>
-										<h3>Popular</h3>
-									
-                                            <span id="ctl00_ContentPlaceHolder1_ad300_ad"><p>Wish Sankranti with beautiful cards <a href="https://www.sankranti.net/cards/">Sankranti Wishes and Cards</a><p>
-<footer><a href="https://www.sankranti.net/messages/pictures.html" class="button button-icon button-icon-info">Messages</a></footer></span>
-								
-
-									</section>
-
-									<section>
-										<h3>Related Articles</h3>
-										<ul class="style2">
-                                            
-
-    
-
-
-
-												
-		<li>								
-		<a id="ctl00_ContentPlaceHolder1_articles_RepLinks_ctl01_title" href="https://www.sankranti.net/receipes/coconut-ladoo.html">Coconut-ladoo</a>
-            </li>	
-    <br />
 
 
 
@@ -309,9 +665,8 @@ Divide this mixture into equal portions and shape into lemon-sized ladoos and St
 
 												
 		<li>								
-		<a id="ctl00_ContentPlaceHolder1_articles_RepLinks_ctl02_title" href="https://www.sankranti.net/receipes/ganee-ki-kheer.html">Ganee-ki-kheer</a>
+		<a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-bengali.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl11_title">Makarsankranti-wishes-in-bengali</a>
             </li>	
-    <br />
 
 
 
@@ -319,131 +674,224 @@ Divide this mixture into equal portions and shape into lemon-sized ladoos and St
 
 												
 		<li>								
-		<a id="ctl00_ContentPlaceHolder1_articles_RepLinks_ctl03_title" href="https://www.sankranti.net/receipes/til-gud-ke-ladoo.html">Til-gud-ke-ladoo</a>
+		<a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-garhwali.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl12_title">Makarsankranti-wishes-in-garhwali</a>
             </li>	
-    <br />
 
 
 
 
 
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-gujrati.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl13_title">Makarsankranti-wishes-in-gujrati</a>
+            </li>	
 
 
-             
- 
- 
- 
 
-										
-										</ul>
-									</section>
 
-								</div>
-						
-						</div>
-					</div>
-				</div>
-			</div>
 
-  			
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-hindi.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl14_title">Makarsankranti-wishes-in-hindi</a>
+            </li>	
 
 
 
 
-	 
 
-	
-	<!-- Footer -->
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-marwari-language.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl15_title">Makarsankranti-wishes-in-marwari-language</a>
+            </li>	
 
-	<footer id="footer" class="5grid-layout">
 
-		<div class="row">
 
-			<div class="12u">
 
 
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-rajasthani.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl16_title">Makarsankranti-wishes-in-rajasthani</a>
+            </li>	
 
-				<!-- About -->
 
-				<section>
 
-					
-					<h2 class="major"><span><a id="ctl00_footer_footerhead" title="Sankranti" href="https://www.sankranti.net/">Sankranti</a></h2>
 
-					<p>
 
-						Makar Sankranti is a inspiring and joyful festival to celebrate end of winter, transition of sun,  and the beginning of a new year. It is a time for families and family generation to come together and celebrate the blessings of life.
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-sanskrit-language.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl17_title">Makarsankranti-wishes-in-sanskrit-language</a>
+            </li>	
 
-					</p>
 
-				</section>
 
-				<!-- /About -->
 
 
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-urdu.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl18_title">Makarsankranti-wishes-in-urdu</a>
+            </li>	
 
-			</div>
 
-		</div>
 
-		<div class="row">
 
-			<div class="12u">
 
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/makarsankranti-wishes-marathai.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl19_title">Makarsankranti-wishes-marathai</a>
+            </li>	
 
 
-				<!-- Contact -->
 
-				<section>
 
-					<h2 class="major"><span>Get in touch</span></h2>
 
-					<ul class="contact">
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/malyalam.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl20_title">Malyalam</a>
+            </li>	
 
-						<li><a href="https://www.facebook.com/sankranti.makar/" class="facebook">Facebook</a></li>
 
-						<li><a href="https://www.linkedin.com/company/dataknobs/" class="linkedin">LinkedIn</a></li>
 
 
-					</ul>
 
-				</section>
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/marathi.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl21_title">Marathi</a>
+            </li>	
 
-				<!-- /Contact -->
 
 
 
-			</div>
 
-		</div>
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/nepalese.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl22_title">Nepalese</a>
+            </li>	
 
-		<div class="row">
 
 
 
-			<!-- Copyright -->
 
-			<div id="copyright">
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/punjabi.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl23_title">Punjabi</a>
+            </li>	
 
-				&copy; 2024 <a id="ctl00_footer_cright">Sankranti</a> | <a id="ctl00_footer_sitemap"></a>  | <a id="ctl00_footer_privacypolicy" href="Sankrantiprivacypolicy.html">Privacy Policy</a> 
 
-			</div>
 
-			<!-- /Copyright -->
 
 
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/sanskrit.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl24_title">Sanskrit</a>
+            </li>	
 
-		</div>
 
-	</footer>
 
-	<!-- /Footer -->
 
-			
-								
-								
-							
 
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/sindhi.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl25_title">Sindhi</a>
+            </li>	
 
-	</body>
-</html>
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/tamil.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl26_title">Tamil</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/telugu.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl27_title">Telugu</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/urdu.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl28_title">Urdu</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/wishes-new-beginning.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl29_title">Wishes-new-beginning</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/wishes-prosperity.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl30_title">Wishes-prosperity</a>
+            </li>	
+
+
+          
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="text-lg font-semibold text-white mb-4">Contact Us</h5>
+        <div class="space-y-2">
+          <p>Redmond<br/>WA, USA</p>
+          <p>
+            <a class="hover:text-white hover:underline transition-colors duration-200" href="mailto:contact@dataknobs.com">contact@dataknobs.com</a>
+          </p>
+          <p>
+            <a class="hover:text-white hover:underline transition-colors duration-200" href="tel:+14253411222">+1 (425) 341-1222</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 border-t border-gray-700 pt-8 flex flex-col items-center justify-between sm:flex-row">
+      <p class="text-sm text-gray-400">© 2025 Dataknobs, Inc. All rights reserved.</p>
+	  
+	  	<div class="flex gap-4 mt-4 sm:mt-0">
+	  
+	   <a class="text-stone-400 hover:text-white" href="https://www.sankranti.net/privacypolicy,html">Privacy Policy</a> <!-- 13 -->
+                 
+	   <a class="text-stone-400 hover:text-white" href="https://www.sankranti.net/sitemap.html">Sitemap</a> <!-- 14 -->
+	   </div>
+      
+      <div class="flex space-x-4 mt-4 sm:mt-0">
+        <a class="text-gray-400 hover:text-white transition-colors duration-200" href="https://www.facebook.com/kreatewebsites/">
+          <span class="sr-only">Facebook</span>
+          <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.772-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path>
+          </svg>
+        </a>
+        <a class="text-gray-400 hover:text-white transition-colors duration-200" href="https://www.twitter.com/kreatewebsites/">
+          <span class="sr-only">Twitter</span>
+          <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+          </svg>
+        </a>
+        <a class="text-gray-400 hover:text-white transition-colors duration-200" href="https://www.linkedin.com/company/kreatewebsites/">
+          <span class="sr-only">LinkedIn</span>
+          <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path clip-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.783-1.75-1.75s.784-1.75 1.75-1.75 1.75.783 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" fill-rule="evenodd"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer></body></html>
+
+
+
+</body></html>
