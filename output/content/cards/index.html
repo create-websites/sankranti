@@ -1,37 +1,729 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>Sankranti Cards</title>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
-	<head id="ctl00_head1"><title>
-	Sankranti Cards
-</title><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="description" /><meta name="keywords" /><link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700|Open+Sans+Condensed:700" rel="stylesheet" />
-		<script src="https://pictures.sankranti.net/site4/js/jquery-1.8.3.min.js"></script>
-		<script src="https://pictures.sankranti.net/site4/css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none&amp;mobileUI.titleBarOverlaid=1"></script>
-		<noscript>
-			<link rel="stylesheet" href="https://pictures.sankranti.net/site4/css/5grid/core.css" /><link rel="stylesheet" href="https://pictures.sankranti.net/site4/css/5grid/core-desktop.css" /><link rel="stylesheet" href="https://pictures.sankranti.net/site4/css/5grid/core-1200px.css" /><link rel="stylesheet" href="https://pictures.sankranti.net/site4/css/5grid/core-noscript.css" /><link rel="stylesheet" href="https://pictures.sankranti.net/site4/css/style.css" /><link rel="stylesheet" href="https://pictures.sankranti.net/site4/css/style-desktop.css" />
-		</noscript>
-		<!--[if lte IE 9]><link rel="stylesheet" href="https://pictures.sankranti.net/site4/css/ie9.css" /><![endif]-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="https://pictures.sankranti.net/site4/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 7]><link rel="stylesheet" href="https://pictures.sankranti.net/site4/css/ie7.css" /><![endif]-->
-    </head>
-	
-	<body >
-          <div id="fb-root"></div>
-<script>(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=1573760292911899";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-		<!-- Header Wrapper -->
-        <!-- Header -->
-			
-									
-									<!-- Nav -->
-										<nav id="nav" class="mobileUI-site-nav">
-											<ul>
+  <style>
+    :root{
+      --bg1:#fff7e6;
+      --bg2:#ffe6b3;
+      --card:#ffffff;
+      --text:#2b2b2b;
+      --muted:#6b6b6b;
+      --accent:#d97706; /* warm saffron */
+      --shadow: 0 10px 25px rgba(0,0,0,.12);
+      --radius: 18px;
+      --gap: 18px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background: radial-gradient(1200px 500px at 10% 0%, var(--bg2), transparent),
+                  radial-gradient(900px 400px at 90% 10%, #ffd08a, transparent),
+                  linear-gradient(180deg, var(--bg1), #fff);
+      min-height:100vh;
+    }
+
+    .wrap{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 16px 48px;
+    }
+
+    header{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .title{
+      line-height:1.05;
+    }
+    .title h1{
+      margin:0;
+      font-size: 34px;
+      letter-spacing: .2px;
+    }
+    .title p{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size: 14px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius: 999px;
+      background: rgba(217,119,6,.12);
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--gap);
+      margin-top: 18px;
+    }
+
+    @media (max-width: 900px){
+      .grid{grid-template-columns: repeat(2, minmax(0, 1fr));}
+    }
+    @media (max-width: 560px){
+      header{flex-direction:column; align-items:flex-start;}
+      .grid{grid-template-columns: 1fr;}
+    }
+
+    .card{
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      transition: transform .15s ease, box-shadow .15s ease;
+      border: 1px solid rgba(0,0,0,.06);
+    }
+    .card:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(0,0,0,.16);
+    }
+
+    .card a{
+      color: inherit;
+      text-decoration:none;
+      display:block;
+    }
+
+    .thumb{
+      position: relative;
+      aspect-ratio: 4 / 3;
+      background: #f4f4f4;
+      overflow:hidden;
+    }
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+      transform: scale(1.01);
+    }
+
+    .meta{
+      padding: 12px 14px 14px;
+      border-top: 1px solid rgba(0,0,0,.06);
+    }
+    .meta .label{
+      font-weight: 800;
+      letter-spacing: .4px;
+      font-size: 13px;
+      text-transform: uppercase;
+      margin: 0;
+      color: #1f2937;
+    }
+    .meta .hint{
+      margin: 6px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    footer{
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <h1>Sankranti</h1>
+        <p>Choose a card below to open the full page.</p>
+      </div>
+      <div class="badge">🪁 Festival Card Collection</div>
+    </header>
+
+    <section class="grid">
+
+      <!-- 1 -->
+      <article class="card">
+        <a href="Good%20Change%20on%20this%20day.html" title="GOOD CHANGE ON THIS DAY">
+          <div class="thumb">
+            <img alt="GOOD CHANGE ON THIS DAY" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/14.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">GOOD CHANGE ON THIS DAY</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 2 -->
+      <article class="card">
+        <a href="Good%20movement%20of%20sun.html" title="GOOD MOVEMENT OF SUN">
+          <div class="thumb">
+            <img alt="GOOD MOVEMENT OF SUN" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/15.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">GOOD MOVEMENT OF SUN</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 3 -->
+      <article class="card">
+        <a href="MakarSankranti%20vs%20Sankranti.html" title="MAKARSANKRANTI VS SANKRANTI">
+          <div class="thumb">
+            <img alt="MAKARSANKRANTI VS SANKRANTI" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/18.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">MAKARSANKRANTI VS SANKRANTI</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 4 -->
+      <article class="card">
+        <a href="Sankranti%20in%20Tamilnadu.html" title="SANKRANTI IN TAMILNADU">
+          <div class="thumb">
+            <img alt="SANKRANTI IN TAMILNADU" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/20.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">SANKRANTI IN TAMILNADU</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 5 -->
+      <article class="card">
+        <a href="Sankranti%20wishes%20and%20cards.html" title="SANKRANTI WISHES AND CARDS">
+          <div class="thumb">
+            <img alt="SANKRANTI WISHES AND CARDS" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/1.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">SANKRANTI WISHES AND CARDS</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 6 -->
+      <article class="card">
+        <a href="Email%20messages.html" title="EMAIL MESSAGES">
+          <div class="thumb">
+            <img alt="EMAIL MESSAGES" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/10.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">EMAIL MESSAGES</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 7 -->
+      <article class="card">
+        <a href="Father%20bless%20son.html" title="FATHER BLESS SON">
+          <div class="thumb">
+            <img alt="FATHER BLESS SON" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/11.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">FATHER BLESS SON</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 8 -->
+      <article class="card">
+        <a href="Sankranti%20tradition.html" title="SANKRANTI TRADITION">
+          <div class="thumb">
+            <img alt="SANKRANTI TRADITION" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/12.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">SANKRANTI TRADITION</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 9 -->
+      <article class="card">
+        <a href="Meaning%20of%20Sankranti.html" title="MEANING OF SANKRANTI">
+          <div class="thumb">
+            <img alt="MEANING OF SANKRANTI" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/13.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">MEANING OF SANKRANTI</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 10 -->
+      <article class="card">
+        <a href="Rangoli%20on%20Sankranti.html" title="RANGOLI ON SANKRANTI">
+          <div class="thumb">
+            <img alt="RANGOLI ON SANKRANTI" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/2.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">RANGOLI ON SANKRANTI</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 11 -->
+      <article class="card">
+        <a href="Sankranti%20and%20prosperity.html" title="SANKRANTI AND PROSPERITY">
+          <div class="thumb">
+            <img alt="SANKRANTI AND PROSPERITY" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/3.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">SANKRANTI AND PROSPERITY</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 12 -->
+      <article class="card">
+        <a href="Sankranti%20is%20auspicious%20day.html" title="SANKRANTI IS AUSPICIOUS DAY">
+          <div class="thumb">
+            <img alt="SANKRANTI IS AUSPICIOUS DAY" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/4.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">SANKRANTI IS AUSPICIOUS DAY</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 13 -->
+      <article class="card">
+        <a href="Sankranti%20greetings.html" title="SANKRANTI GREETINGS">
+          <div class="thumb">
+            <img alt="SANKRANTI GREETINGS" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/5.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">SANKRANTI GREETINGS</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 14 -->
+      <article class="card">
+        <a href="Happy%20Makarsankranti%20Bihu%20Pong.html" title="HAPPY MAKARSANKRANTI BIHU PONG">
+          <div class="thumb">
+            <img alt="HAPPY MAKARSANKRANTI BIHU PONG" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/6.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">HAPPY MAKARSANKRANTI BIHU PONG</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 15 -->
+      <article class="card">
+        <a href="Send%20Sankranti%20SMS.html" title="SEND SANKRANTI SMS">
+          <div class="thumb">
+            <img alt="SEND SANKRANTI SMS" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/7.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">SEND SANKRANTI SMS</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 16 -->
+      <article class="card">
+        <a href="Shub%20Muhurat.html" title="SHUB MUHURAT">
+          <div class="thumb">
+            <img alt="SHUB MUHURAT" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/8.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">SHUB MUHURAT</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 17 -->
+      <article class="card">
+        <a href="Sankranti%20means%20new%20begining.html" title="SANKRANTI MEANS NEW BEGINING">
+          <div class="thumb">
+            <img alt="SANKRANTI MEANS NEW BEGINING" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/9.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">SANKRANTI MEANS NEW BEGINING</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 18 -->
+      <article class="card">
+        <a href="Surya.html" title="SURYA">
+          <div class="thumb">
+            <img alt="SURYA" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/16.JPG"/>
+          </div>
+          <div class="meta">
+            <p class="label">SURYA</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 19 -->
+      <article class="card">
+        <a href="Capricorn%20sign.html" title="CAPRICORN SIGN">
+          <div class="thumb">
+            <img alt="CAPRICORN SIGN" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/17.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">CAPRICORN SIGN</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 20 -->
+      <article class="card">
+        <a href="Pongal%20in%20AndhraPradesh.html" title="PONGAL IN ANDHRAPRADESH">
+          <div class="thumb">
+            <img alt="PONGAL IN ANDHRAPRADESH" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/19.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">PONGAL IN ANDHRAPRADESH</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 21 -->
+      <article class="card">
+        <a href="Khichdi%20food.html" title="KHICHDI FOOD">
+          <div class="thumb">
+            <img alt="KHICHDI FOOD" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/22.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">KHICHDI FOOD</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 22 -->
+      <article class="card">
+        <a href="Kite%20flying.html" title="KITE FLYING">
+          <div class="thumb">
+            <img alt="KITE FLYING" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/21.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">KITE FLYING</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 23 -->
+      <article class="card">
+        <a href="Gangasagar%20mela%20in%20East%20India.html" title="GANGASAGAR MELA IN EAST INDIA">
+          <div class="thumb">
+            <img alt="GANGASAGAR MELA IN EAST INDIA" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/23.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">GANGASAGAR MELA IN EAST INDIA</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 24 -->
+      <article class="card">
+        <a href="Bihu%20in%20Assam.html" title="BIHU IN ASSAM">
+          <div class="thumb">
+            <img alt="BIHU IN ASSAM" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/25.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">BIHU IN ASSAM</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 25 -->
+      <article class="card">
+        <a href="Sankranti%20in%20Thailand.html" title="SANKRANTI IN THAILAND">
+          <div class="thumb">
+            <img alt="SANKRANTI IN THAILAND" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/26.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">SANKRANTI IN THAILAND</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 26 -->
+      <article class="card">
+        <a href="Harvesting.html" title="HARVESTING">
+          <div class="thumb">
+            <img alt="HARVESTING" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/27.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">HARVESTING</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 27 -->
+      <article class="card">
+        <a href="Sankranti%20in%20US%20Europe%20Austral.html" title="SANKRANTI IN US EUROPE AUSTRAL">
+          <div class="thumb">
+            <img alt="SANKRANTI IN US EUROPE AUSTRAL" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/24.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">SANKRANTI IN US EUROPE AUSTRAL</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 28 -->
+      <article class="card">
+        <a href="Happy%20Makarsankranti%20messages.html" title="HAPPY MAKARSANKRANTI MESSAGES">
+          <div class="thumb">
+            <img alt="HAPPY MAKARSANKRANTI MESSAGES" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/101.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">HAPPY MAKARSANKRANTI MESSAGES</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 29 -->
+      <article class="card">
+        <a href="Greetings%20for%20Sankranti.html" title="GREETINGS FOR SANKRANTI">
+          <div class="thumb">
+            <img alt="GREETINGS FOR SANKRANTI" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/102.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">GREETINGS FOR SANKRANTI</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 30 -->
+      <article class="card">
+        <a href="Sankranti%20and%20harvesting.html" title="SANKRANTI AND HARVESTING">
+          <div class="thumb">
+            <img alt="SANKRANTI AND HARVESTING" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/103.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">SANKRANTI AND HARVESTING</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- 31 -->
+      <article class="card">
+        <a href="Harvesting%20and%20prosperity.html" title="HARVESTING AND PROSPERITY">
+          <div class="thumb">
+            <img alt="HARVESTING AND PROSPERITY" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/104.jpg"/>
+          </div>
+          <div class="meta">
+            <p class="label">HARVESTING AND PROSPERITY</p>
+            <p class="hint">Open card</p>
+          </div>
+        </a>
+      </article>
+
+    </section>
+
+    <html><head></head><body><footer class="bg-gray-800 text-gray-300">
+  <div class="container mx-auto px-6 py-12 lg:px-8">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+      
+      <div>
+        <h5 class="text-lg font-semibold text-white mb-4">Makarsankranti Uttarayan</h5>
+        <ul class="space-y-2">
+
+
+
+
+		
+
+
+	<li>								
+		<a href="https://www.sankranti.net/3-days-of-sankranti-and-pongal-celebration.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl01_title">3-days-of-sankranti-and-pongal-celebration</a>
+            </li>	
+
+
+
+
+
 												
-                    
+		<li>								
+		<a href="https://www.sankranti.net/different-names-of-sankranti.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl02_title">Different-names-of-sankranti</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/image.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl03_title">Image</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/important-sankrantis.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl04_title">Important-sankrantis</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/index2.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl05_title">Index2</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/information.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl06_title">Information</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/khichdi-purv.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl07_title">Khichdi-purv</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/lohri.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl08_title">Lohri</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/magh-bihu.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl09_title">Magh-bihu</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/makarsankranti-information.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl10_title">Makarsankranti-information</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/pongal.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl11_title">Pongal</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/sankranti-vs-makarsankranti.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl12_title">Sankranti-vs-makarsankranti</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/sitemap.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl13_title">Sitemap</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/start-of-spring.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl14_title">Start-of-spring</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/what-is-pedda-festival.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl15_title">What-is-pedda-festival</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/what-is-uttarayaana.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl16_title">What-is-uttarayaana</a>
+            </li>	
+
+
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="text-lg font-semibold text-white mb-4">Stories of Makarsankrnti</h5>
+        <ul class="space-y-2">
+
+	
+    
 
     
 
@@ -39,7 +731,7 @@
 
 												
 		<li>								
-		<a id="ctl00_articles_RepLinks_ctl01_title" href="https://www.sankranti.net/">Home</a>
+		<a href="https://www.sankranti.net/wishes/assamese.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl01_title">Assamese</a>
             </li>	
 
 
@@ -48,7 +740,7 @@
 
 												
 		<li>								
-		<a id="ctl00_articles_RepLinks_ctl02_title" href="https://www.sankranti.net/cards/">Cards</a>
+		<a href="https://www.sankranti.net/wishes/bengali.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl02_title">Bengali</a>
             </li>	
 
 
@@ -57,7 +749,7 @@
 
 												
 		<li>								
-		<a id="ctl00_articles_RepLinks_ctl03_title" href="https://www.sankranti.net/essay/">Essay</a>
+		<a href="https://www.sankranti.net/wishes/bhojpuri.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl03_title">Bhojpuri</a>
             </li>	
 
 
@@ -66,7 +758,7 @@
 
 												
 		<li>								
-		<a id="ctl00_articles_RepLinks_ctl04_title" href="https://www.sankranti.net/harvest-festivals/">Harvest festivals</a>
+		<a href="https://www.sankranti.net/wishes/bihari.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl04_title">Bihari</a>
             </li>	
 
 
@@ -75,7 +767,7 @@
 
 												
 		<li>								
-		<a id="ctl00_articles_RepLinks_ctl05_title" href="https://www.sankranti.net/Hindu-festivals/">Hindu festivals</a>
+		<a href="https://www.sankranti.net/wishes/english.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl05_title">English</a>
             </li>	
 
 
@@ -84,7 +776,7 @@
 
 												
 		<li>								
-		<a id="ctl00_articles_RepLinks_ctl06_title" href="https://www.sankranti.net/messages/">Messages</a>
+		<a href="https://www.sankranti.net/wishes/gujarati.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl06_title">Gujarati</a>
             </li>	
 
 
@@ -93,7 +785,7 @@
 
 												
 		<li>								
-		<a id="ctl00_articles_RepLinks_ctl07_title" href="https://www.sankranti.net/pilgrimages/">Pilgrimages</a>
+		<a href="https://www.sankranti.net/wishes/hindi.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl07_title">Hindi</a>
             </li>	
 
 
@@ -102,7 +794,7 @@
 
 												
 		<li>								
-		<a id="ctl00_articles_RepLinks_ctl08_title" href="https://www.sankranti.net/receipes/">Receipes</a>
+		<a href="https://www.sankranti.net/wishes/kannada.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl08_title">Kannada</a>
             </li>	
 
 
@@ -111,7 +803,7 @@
 
 												
 		<li>								
-		<a id="ctl00_articles_RepLinks_ctl09_title" href="https://www.sankranti.net/tradition/">Tradition</a>
+		<a href="https://www.sankranti.net/wishes/kashmiri.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl09_title">Kashmiri</a>
             </li>	
 
 
@@ -120,1085 +812,242 @@
 
 												
 		<li>								
-		<a id="ctl00_articles_RepLinks_ctl10_title" href="https://www.sankranti.net/wishes/">Wishes</a>
+		<a href="https://www.sankranti.net/wishes/makarsankranti-play-script.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl10_title">Makarsankranti-play-script</a>
             </li>	
 
 
 
 
 
-
-
-             
- 
- 
- 
-
-						<h1> <a id="ctl00_topheader" class="mobileUI-site-name">Sankranti Cards</a></h1>
-                                               
-											</ul>
-										</nav>
-								
-								
-		
-		
-
-    	<div id="main-wrapper">
-			<div id="main" class="5grid-layout">
-					<div class="row">
-						<div class="9u mobileUI-main-content">
-                            <div class="content content-left">
-				
-								<article class="is-page-content">
-
-							<header>
-											
-                                             <h3><span id="ctl00_ContentPlaceHolder1_title">Sankranti Cards</span></h3>
-											
-										<span class="byline"> <span id="ctl00_ContentPlaceHolder1_metadesc"></span></span>	
-										
-
-								</header>
-                                         
-											
-								<section>	
-								<br />
-										<br />
-                                           
-
-							<table id="ctl00_ContentPlaceHolder1_RepDetails" cellspacing="0" border="0">
-	<tr>
-		<td colspan="3">
-
-
-</td>
-	</tr><tr>
-		<td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl01_imghyperlink" href="Good%20Change%20on%20this%20day.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl01_Image1" alt="GOOD CHANGE ON THIS DAY" NavigateUrl="Good Change on this day.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/14.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl01_hyperlink1" href="Good%20Change%20on%20this%20day.html">GOOD CHANGE ON THIS DAY</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl02_imghyperlink" href="Good%20movement%20of%20sun.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl02_Image1" alt="GOOD MOVEMENT OF SUN" NavigateUrl="Good movement of sun.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/15.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl02_hyperlink1" href="Good%20movement%20of%20sun.html">GOOD MOVEMENT OF SUN</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl03_imghyperlink" href="MakarSankranti%20vs%20Sankranti.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl03_Image1" alt="MAKARSANKRANTI VS SANKRANTI" NavigateUrl="MakarSankranti vs Sankranti.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/18.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl03_hyperlink1" href="MakarSankranti%20vs%20Sankranti.html">MAKARSANKRANTI VS SANKRANTI</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td>
-	</tr><tr>
-		<td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl04_imghyperlink" href="Sankranti%20in%20Tamilnadu.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl04_Image1" alt="SANKRANTI IN TAMILNADU" NavigateUrl="Sankranti in Tamilnadu.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/20.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl04_hyperlink1" href="Sankranti%20in%20Tamilnadu.html">SANKRANTI IN TAMILNADU</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl05_imghyperlink" href="Sankranti%20wishes%20and%20cards.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl05_Image1" alt="SANKRANTI WISHES AND CARDS" NavigateUrl="Sankranti wishes and cards.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/1.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl05_hyperlink1" href="Sankranti%20wishes%20and%20cards.html">SANKRANTI WISHES AND CARDS</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl06_imghyperlink" href="Email%20messages.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl06_Image1" alt="EMAIL MESSAGES" NavigateUrl="Email messages.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/10.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl06_hyperlink1" href="Email%20messages.html">EMAIL MESSAGES</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td>
-	</tr><tr>
-		<td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl07_imghyperlink" href="Father%20bless%20son.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl07_Image1" alt="FATHER BLESS SON" NavigateUrl="Father bless son.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/11.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl07_hyperlink1" href="Father%20bless%20son.html">FATHER BLESS SON</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl08_imghyperlink" href="Sankranti%20tradition.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl08_Image1" alt="SANKRANTI TRADITION" NavigateUrl="Sankranti tradition.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/12.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl08_hyperlink1" href="Sankranti%20tradition.html">SANKRANTI TRADITION</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl09_imghyperlink" href="Meaning%20of%20Sankranti.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl09_Image1" alt="MEANING OF SANKRANTI" NavigateUrl="Meaning of Sankranti.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/13.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl09_hyperlink1" href="Meaning%20of%20Sankranti.html">MEANING OF SANKRANTI</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td>
-	</tr><tr>
-		<td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl10_imghyperlink" href="Rangoli%20on%20Sankranti.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl10_Image1" alt="RANGOLI ON SANKRANTI" NavigateUrl="Rangoli on Sankranti.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/2.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl10_hyperlink1" href="Rangoli%20on%20Sankranti.html">RANGOLI ON SANKRANTI</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl11_imghyperlink" href="Sankranti%20and%20prosperity.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl11_Image1" alt="SANKRANTI AND PROSPERITY" NavigateUrl="Sankranti and prosperity.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/3.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl11_hyperlink1" href="Sankranti%20and%20prosperity.html">SANKRANTI AND PROSPERITY</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl12_imghyperlink" href="Sankranti%20is%20auspicious%20day.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl12_Image1" alt="SANKRANTI IS AUSPICIOUS DAY" NavigateUrl="Sankranti is auspicious day.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/4.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl12_hyperlink1" href="Sankranti%20is%20auspicious%20day.html">SANKRANTI IS AUSPICIOUS DAY</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td>
-	</tr><tr>
-		<td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl13_imghyperlink" href="Sankranti%20greetings.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl13_Image1" alt="SANKRANTI GREETINGS" NavigateUrl="Sankranti greetings.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/5.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl13_hyperlink1" href="Sankranti%20greetings.html">SANKRANTI GREETINGS</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl14_imghyperlink" href="Happy%20Makarsankranti%20Bihu%20Pong.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl14_Image1" alt="HAPPY MAKARSANKRANTI BIHU PONG" NavigateUrl="Happy Makarsankranti Bihu Pong.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/6.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl14_hyperlink1" href="Happy%20Makarsankranti%20Bihu%20Pong.html">HAPPY MAKARSANKRANTI BIHU PONG</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl15_imghyperlink" href="Send%20Sankranti%20SMS.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl15_Image1" alt="SEND SANKRANTI SMS" NavigateUrl="Send Sankranti SMS.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/7.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl15_hyperlink1" href="Send%20Sankranti%20SMS.html">SEND SANKRANTI SMS</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td>
-	</tr><tr>
-		<td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl16_imghyperlink" href="Shub%20Muhurat.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl16_Image1" alt="SHUB MUHURAT" NavigateUrl="Shub Muhurat.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/8.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl16_hyperlink1" href="Shub%20Muhurat.html">SHUB MUHURAT</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl17_imghyperlink" href="Sankranti%20means%20new%20begining.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl17_Image1" alt="SANKRANTI MEANS NEW BEGINING" NavigateUrl="Sankranti means new begining.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/9.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl17_hyperlink1" href="Sankranti%20means%20new%20begining.html">SANKRANTI MEANS NEW BEGINING</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl18_imghyperlink" href="Surya.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl18_Image1" alt="SURYA" NavigateUrl="Surya.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/16.JPG" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl18_hyperlink1" href="Surya.html">SURYA</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td>
-	</tr><tr>
-		<td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl19_imghyperlink" href="Capricorn%20sign.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl19_Image1" alt="CAPRICORN SIGN" NavigateUrl="Capricorn sign.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/17.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl19_hyperlink1" href="Capricorn%20sign.html">CAPRICORN SIGN</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl20_imghyperlink" href="Pongal%20in%20AndhraPradesh.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl20_Image1" alt="PONGAL IN ANDHRAPRADESH" NavigateUrl="Pongal in AndhraPradesh.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/19.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl20_hyperlink1" href="Pongal%20in%20AndhraPradesh.html">PONGAL IN ANDHRAPRADESH</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl21_imghyperlink" href="Khichdi%20food.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl21_Image1" alt="KHICHDI FOOD" NavigateUrl="Khichdi food.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/22.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl21_hyperlink1" href="Khichdi%20food.html">KHICHDI FOOD</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td>
-	</tr><tr>
-		<td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl22_imghyperlink" href="Kite%20flying.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl22_Image1" alt="KITE FLYING" NavigateUrl="Kite flying.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/21.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl22_hyperlink1" href="Kite%20flying.html">KITE FLYING</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl23_imghyperlink" href="Gangasagar%20mela%20in%20East%20India.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl23_Image1" alt="GANGASAGAR MELA IN EAST INDIA" NavigateUrl="Gangasagar mela in East India.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/23.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl23_hyperlink1" href="Gangasagar%20mela%20in%20East%20India.html">GANGASAGAR MELA IN EAST INDIA</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl24_imghyperlink" href="Bihu%20in%20Assam.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl24_Image1" alt="BIHU IN ASSAM" NavigateUrl="Bihu in Assam.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/25.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl24_hyperlink1" href="Bihu%20in%20Assam.html">BIHU IN ASSAM</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td>
-	</tr><tr>
-		<td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl25_imghyperlink" href="Sankranti%20in%20Thailand.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl25_Image1" alt="SANKRANTI IN THAILAND" NavigateUrl="Sankranti in Thailand.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/26.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl25_hyperlink1" href="Sankranti%20in%20Thailand.html">SANKRANTI IN THAILAND</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl26_imghyperlink" href="Harvesting.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl26_Image1" alt="HARVESTING" NavigateUrl="Harvesting.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/27.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl26_hyperlink1" href="Harvesting.html">HARVESTING</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl27_imghyperlink" href="Sankranti%20in%20US%20Europe%20Austral.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl27_Image1" alt="SANKRANTI IN US EUROPE AUSTRAL" NavigateUrl="Sankranti in US Europe Austral.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/24.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl27_hyperlink1" href="Sankranti%20in%20US%20Europe%20Austral.html">SANKRANTI IN US EUROPE AUSTRAL</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td>
-	</tr><tr>
-		<td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl28_imghyperlink" href="Happy%20Makarsankranti%20messages.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl28_Image1" alt="HAPPY MAKARSANKRANTI MESSAGES" NavigateUrl="Happy Makarsankranti messages.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/101.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl28_hyperlink1" href="Happy%20Makarsankranti%20messages.html">HAPPY MAKARSANKRANTI MESSAGES</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl29_imghyperlink" href="Greetings%20for%20Sankranti.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl29_Image1" alt="GREETINGS FOR SANKRANTI" NavigateUrl="Greetings for Sankranti.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/102.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl29_hyperlink1" href="Greetings%20for%20Sankranti.html">GREETINGS FOR SANKRANTI</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl30_imghyperlink" href="Sankranti%20and%20harvesting.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl30_Image1" alt="SANKRANTI AND HARVESTING" NavigateUrl="Sankranti and harvesting.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/103.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl30_hyperlink1" href="Sankranti%20and%20harvesting.html">SANKRANTI AND HARVESTING</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td>
-	</tr><tr>
-		<td>
-
-
-					
-                   
-<a id="ctl00_ContentPlaceHolder1_RepDetails_ctl31_imghyperlink" href="Harvesting%20and%20prosperity.html"><img id="ctl00_ContentPlaceHolder1_RepDetails_ctl31_Image1" alt="HARVESTING AND PROSPERITY" NavigateUrl="Harvesting and prosperity.html" src="http://storage.googleapis.com/kreatewebsites/festival/cards/sankranti/photos200/104.jpg" border="0" /></a>
-
-                                                <blockquote>  <a id="ctl00_ContentPlaceHolder1_RepDetails_ctl31_hyperlink1" href="Harvesting%20and%20prosperity.html">HARVESTING AND PROSPERITY</a></blockquote>
-												 
-				
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                							
-		
-
-  </div>
-
-</td><td></td><td></td>
-	</tr><tr>
-		<td colspan="3">
-
-
-
-</td>
-	</tr>
-</table>
-
-								</section>
-								
-							<section>
-								<p><span id="ctl00_ContentPlaceHolder1_labeltext"></span></p>
-                             </section>                            														
-									<br />
-									<br />
-								<section>
-									<table id="ctl00_ContentPlaceHolder1_RepComments" cellspacing="0" border="0">
-	<tr>
-		<td>
-
-
-</td>
-	</tr><tr>
-		<td>
-
-
-					
-                   
-
-												 
-               							
-		
-
-      <span id="ctl00_ContentPlaceHolder1_RepComments_ctl01_label2"><font color="Black" size="4"><p>Happy Sankranti 2016! Send these wonderful cards to wish Happy Makarsankranti, Pongal</p></font></span>
-    <br />
-
-
-</td>
-	</tr><tr>
-		<td>
-
-
-					
-                   
-
-												 
-               							
-		
-
-      <span id="ctl00_ContentPlaceHolder1_RepComments_ctl02_label2"><font color="Black" size="4">Download Makarsankranti cards and wish Happy makarsankranti to your friends.
-</font></span>
-    <br />
-
-
-</td>
-	</tr><tr>
-		<td>
-
-
-					
-                   
-
-												 
-               							
-		
-
-      <span id="ctl00_ContentPlaceHolder1_RepComments_ctl03_label2"><font color="Black" size="4"><br/>
-Lets embrace simplicity and sincerity on Makarsankranti and you shall have a wonderful year ahead
-<br/></font></span>
-    <br />
-
-
-</td>
-	</tr><tr>
-		<td>
-
-
-					
-                   
-
-												 
-               							
-		
-
-      <span id="ctl00_ContentPlaceHolder1_RepComments_ctl04_label2"><font color="Black" size="4"><br/>
-May you reinvent yourself on this Makarsankranti and embark upon a journey full of excitement and adventure.
-<br/></font></span>
-    <br />
-
-
-</td>
-	</tr><tr>
-		<td>
-
-
-					
-                   
-
-												 
-               							
-		
-
-      <span id="ctl00_ContentPlaceHolder1_RepComments_ctl05_label2"><font color="Black" size="4"><br/>
-May you discover all your hidden potentials this MakarSankranti and turn them into delightful ventures bringing you fame and finances to rejoice.<br/>
-<br/></font></span>
-    <br />
-
-
-</td>
-	</tr><tr>
-		<td>
-
-
-					
-                   
-
-												 
-               							
-		
-
-      <span id="ctl00_ContentPlaceHolder1_RepComments_ctl06_label2"><font color="Black" size="4"><br/>
-Wish you a successful and prosperous life - Happy MakarSankranti.<br/>
-<br/></font></span>
-    <br />
-
-
-</td>
-	</tr><tr>
-		<td>
-
-
-					
-                   
-
-												 
-               							
-		
-
-      <span id="ctl00_ContentPlaceHolder1_RepComments_ctl07_label2"><font color="Black" size="4">Wishing you an Sankranti that bring fully loaded with happiness. <br/></font></span>
-    <br />
-
-
-</td>
-	</tr><tr>
-		<td>
-
-
-
-</td>
-	</tr>
-</table>    
-									<br />
-									<br />
-								</section>	
-								<section>
-									<div class="fb-activity" data-site="https://www.sankranti.net/" data-action="likes, recommends" data-colorscheme="light" data-header="true"></div>
-	
-								
-									<div class="fb-comments" data-href="https://www.sankranti.net/" data-numposts="5" data-colorscheme="light" data-order-by="reverse_time"></div>
-			
-								</section>
-
-								<section>
-									
-
-    
-
-
-
 												
-									
-		<a id="ctl00_ContentPlaceHolder1_articles2_RepLinks_ctl01_title" href="https://www.sankranti.net/cards/Bihu%20in%20Assam.html">Bihu in Assam</a>
-            	
-&nbsp;&nbsp;
+		<li>								
+		<a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-bengali.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl11_title">Makarsankranti-wishes-in-bengali</a>
+            </li>	
 
 
 
 
 
 												
-									
-		<a id="ctl00_ContentPlaceHolder1_articles2_RepLinks_ctl02_title" href="https://www.sankranti.net/cards/Capricorn%20sign.html">Capricorn sign</a>
-            	
-&nbsp;&nbsp;
+		<li>								
+		<a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-garhwali.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl12_title">Makarsankranti-wishes-in-garhwali</a>
+            </li>	
 
 
 
 
 
 												
-									
-		<a id="ctl00_ContentPlaceHolder1_articles2_RepLinks_ctl03_title" href="https://www.sankranti.net/cards/Email%20messages.html">Email messages</a>
-            	
-&nbsp;&nbsp;
+		<li>								
+		<a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-gujrati.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl13_title">Makarsankranti-wishes-in-gujrati</a>
+            </li>	
 
 
 
 
 
 												
-									
-		<a id="ctl00_ContentPlaceHolder1_articles2_RepLinks_ctl04_title" href="https://www.sankranti.net/cards/Father%20bless%20son.html">Father bless son</a>
-            	
-&nbsp;&nbsp;
+		<li>								
+		<a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-hindi.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl14_title">Makarsankranti-wishes-in-hindi</a>
+            </li>	
 
 
 
 
 
 												
-									
-		<a id="ctl00_ContentPlaceHolder1_articles2_RepLinks_ctl05_title" href="https://www.sankranti.net/cards/Gangasagar%20mela%20in%20East%20India.html">Gangasagar mela in East India</a>
-            	
-&nbsp;&nbsp;
+		<li>								
+		<a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-marwari-language.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl15_title">Makarsankranti-wishes-in-marwari-language</a>
+            </li>	
 
 
 
 
 
 												
-									
-		<a id="ctl00_ContentPlaceHolder1_articles2_RepLinks_ctl06_title" href="https://www.sankranti.net/cards/Good%20Change%20on%20this%20day.html">Good Change on this day</a>
-            	
-&nbsp;&nbsp;
+		<li>								
+		<a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-rajasthani.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl16_title">Makarsankranti-wishes-in-rajasthani</a>
+            </li>	
 
 
 
 
 
 												
-									
-		<a id="ctl00_ContentPlaceHolder1_articles2_RepLinks_ctl07_title" href="https://www.sankranti.net/cards/Good%20movement%20of%20sun.html">Good movement of sun</a>
-            	
-&nbsp;&nbsp;
+		<li>								
+		<a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-sanskrit-language.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl17_title">Makarsankranti-wishes-in-sanskrit-language</a>
+            </li>	
 
 
 
 
 
 												
-									
-		<a id="ctl00_ContentPlaceHolder1_articles2_RepLinks_ctl08_title" href="https://www.sankranti.net/cards/greeting-cards.html">Greeting-cards</a>
-            	
-&nbsp;&nbsp;
+		<li>								
+		<a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-urdu.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl18_title">Makarsankranti-wishes-in-urdu</a>
+            </li>	
 
 
 
 
 
 												
-									
-		<a id="ctl00_ContentPlaceHolder1_articles2_RepLinks_ctl09_title" href="https://www.sankranti.net/cards/Greetings%20for%20Sankranti.html">Greetings for Sankranti</a>
-            	
-&nbsp;&nbsp;
+		<li>								
+		<a href="https://www.sankranti.net/wishes/makarsankranti-wishes-marathai.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl19_title">Makarsankranti-wishes-marathai</a>
+            </li>	
 
 
 
 
 
 												
-									
-		<a id="ctl00_ContentPlaceHolder1_articles2_RepLinks_ctl10_title" href="https://www.sankranti.net/cards/Happy%20Makarsankranti%20Bihu%20Pong.html">Happy Makarsankranti Bihu Pong</a>
-            	
-&nbsp;&nbsp;
+		<li>								
+		<a href="https://www.sankranti.net/wishes/malyalam.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl20_title">Malyalam</a>
+            </li>	
 
 
 
 
 
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/marathi.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl21_title">Marathi</a>
+            </li>	
 
 
-             
- 
- 
- 
-	
-								</section>
-						
-								<section>
-									<span id="ctl00_ContentPlaceHolder1_label1"></span>	
-								</section>
 
-                                                           														
- 
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/nepalese.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl22_title">Nepalese</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/punjabi.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl23_title">Punjabi</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/sanskrit.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl24_title">Sanskrit</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/sindhi.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl25_title">Sindhi</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/tamil.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl26_title">Tamil</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/telugu.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl27_title">Telugu</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/urdu.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl28_title">Urdu</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/wishes-new-beginning.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl29_title">Wishes-new-beginning</a>
+            </li>	
+
+
+
+
+
+												
+		<li>								
+		<a href="https://www.sankranti.net/wishes/wishes-prosperity.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl30_title">Wishes-prosperity</a>
+            </li>	
+
+
           
-
-				<span id="ctl00_ContentPlaceHolder1_actions_ad"><div class="actions">
-
-													<a href="https://www.sankranti.net/cards/" class="button button-big">Cards</a>
-
-													<a href="https://www.sankranti.net/messages/pictures.html" class="button button-alt button-big">Messages</a>
-
-</div></span>	
-									
-
-									
-				</article>
-							</div>
-
-						</div>
-						<div class="3u">
-						
-							<!-- Sidebar -->
-								<div id="sidebar">
-
-									<section>
-										<h3>Popular</h3>
-									
-                                            <span id="ctl00_ContentPlaceHolder1_ad300_ad"><p>Wish Sankranti with beautiful cards <a href="https://www.sankranti.net/cards/">Sankranti Wishes and Cards</a><p>
-<footer><a href="https://www.sankranti.net/messages/pictures.html" class="button button-icon button-icon-info">Messages</a></footer></span>
-									
-										
-									</section>
-
-									<section>
-										<h3>Related Articles</h3>
-										<ul class="style2">
-                                            
-
-    
-
-
-
-												
-		<li>								
-		<a id="ctl00_ContentPlaceHolder1_articles_RepLinks_ctl01_title" href="https://www.sankranti.net/cards/Bihu%20in%20Assam.html">Bihu in Assam</a>
-            </li>	
-    <br />
-
-
-
-
-
-												
-		<li>								
-		<a id="ctl00_ContentPlaceHolder1_articles_RepLinks_ctl02_title" href="https://www.sankranti.net/cards/Capricorn%20sign.html">Capricorn sign</a>
-            </li>	
-    <br />
-
-
-
-
-
-												
-		<li>								
-		<a id="ctl00_ContentPlaceHolder1_articles_RepLinks_ctl03_title" href="https://www.sankranti.net/cards/Email%20messages.html">Email messages</a>
-            </li>	
-    <br />
-
-
-
-
-
-												
-		<li>								
-		<a id="ctl00_ContentPlaceHolder1_articles_RepLinks_ctl04_title" href="https://www.sankranti.net/cards/Father%20bless%20son.html">Father bless son</a>
-            </li>	
-    <br />
-
-
-
-
-
-												
-		<li>								
-		<a id="ctl00_ContentPlaceHolder1_articles_RepLinks_ctl05_title" href="https://www.sankranti.net/cards/Gangasagar%20mela%20in%20East%20India.html">Gangasagar mela in East India</a>
-            </li>	
-    <br />
-
-
-
-
-
-												
-		<li>								
-		<a id="ctl00_ContentPlaceHolder1_articles_RepLinks_ctl06_title" href="https://www.sankranti.net/cards/Good%20Change%20on%20this%20day.html">Good Change on this day</a>
-            </li>	
-    <br />
-
-
-
-
-
-												
-		<li>								
-		<a id="ctl00_ContentPlaceHolder1_articles_RepLinks_ctl07_title" href="https://www.sankranti.net/cards/Good%20movement%20of%20sun.html">Good movement of sun</a>
-            </li>	
-    <br />
-
-
-
-
-
-												
-		<li>								
-		<a id="ctl00_ContentPlaceHolder1_articles_RepLinks_ctl08_title" href="https://www.sankranti.net/cards/greeting-cards.html">Greeting-cards</a>
-            </li>	
-    <br />
-
-
-
-
-
-												
-		<li>								
-		<a id="ctl00_ContentPlaceHolder1_articles_RepLinks_ctl09_title" href="https://www.sankranti.net/cards/Greetings%20for%20Sankranti.html">Greetings for Sankranti</a>
-            </li>	
-    <br />
-
-
-
-
-
-												
-		<li>								
-		<a id="ctl00_ContentPlaceHolder1_articles_RepLinks_ctl10_title" href="https://www.sankranti.net/cards/Happy%20Makarsankranti%20Bihu%20Pong.html">Happy Makarsankranti Bihu Pong</a>
-            </li>	
-    <br />
-
-
-
-
-
-
-
-             
- 
- 
- 
-
-										
-										</ul>
-									</section>
-
-								</div>
-						
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-
-
-
-	 
-
-	
-	<!-- Footer -->
-
-	<footer id="footer" class="5grid-layout">
-
-		<div class="row">
-
-			<div class="12u">
-
-
-
-				<!-- About -->
-
-				<section>
-
-					
-					<h2 class="major"><span><a id="ctl00_footer_footerhead" title="Sankranti" href="https://www.sankranti.net/">Sankranti</a></h2>
-
-					<p>
-
-						Makar Sankranti is a inspiring and joyful festival to celebrate end of winter, transition of sun,  and the beginning of a new year. It is a time for families and family generation to come together and celebrate the blessings of life.
-
-					</p>
-
-				</section>
-
-				<!-- /About -->
-
-
-
-			</div>
-
-		</div>
-
-		<div class="row">
-
-			<div class="12u">
-
-
-
-				<!-- Contact -->
-
-				<section>
-
-					<h2 class="major"><span>Get in touch</span></h2>
-
-					<ul class="contact">
-
-						<li><a href="https://www.facebook.com/sankranti.makar/" class="facebook">Facebook</a></li>
-
-						<li><a href="https://www.linkedin.com/company/dataknobs/" class="linkedin">LinkedIn</a></li>
-
-
-					</ul>
-
-				</section>
-
-				<!-- /Contact -->
-
-
-
-			</div>
-
-		</div>
-
-		<div class="row">
-
-
-
-			<!-- Copyright -->
-
-			<div id="copyright">
-
-				&copy; 2024 <a id="ctl00_footer_cright">Sankranti</a> | <a id="ctl00_footer_sitemap"></a>  | <a id="ctl00_footer_privacypolicy" href="Sankrantiprivacypolicy.html">Privacy Policy</a> 
-
-			</div>
-
-			<!-- /Copyright -->
-
-
-
-		</div>
-
-	</footer>
-
-	<!-- /Footer -->
-
-			
-								
-								
-							
-
-
-	</body>
-</html>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="text-lg font-semibold text-white mb-4">Contact Us</h5>
+        <div class="space-y-2">
+          <p>Redmond<br/>WA, USA</p>
+          <p>
+            <a class="hover:text-white hover:underline transition-colors duration-200" href="mailto:contact@dataknobs.com">contact@dataknobs.com</a>
+          </p>
+          <p>
+            <a class="hover:text-white hover:underline transition-colors duration-200" href="tel:+14253411222">+1 (425) 341-1222</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 border-t border-gray-700 pt-8 flex flex-col items-center justify-between sm:flex-row">
+      <p class="text-sm text-gray-400">© 2025 Dataknobs, Inc. All rights reserved.</p>
+	  
+	  	<div class="flex gap-4 mt-4 sm:mt-0">
+	  
+	   <a class="text-stone-400 hover:text-white" href="https://www.sankranti.net/privacypolicy,html">Privacy Policy</a> <!-- 13 -->
+                 
+	   <a class="text-stone-400 hover:text-white" href="https://www.sankranti.net/sitemap.html">Sitemap</a> <!-- 14 -->
+	   </div>
+      
+      <div class="flex space-x-4 mt-4 sm:mt-0">
+        <a class="text-gray-400 hover:text-white transition-colors duration-200" href="https://www.facebook.com/kreatewebsites/">
+          <span class="sr-only">Facebook</span>
+          <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.772-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path>
+          </svg>
+        </a>
+        <a class="text-gray-400 hover:text-white transition-colors duration-200" href="https://www.twitter.com/kreatewebsites/">
+          <span class="sr-only">Twitter</span>
+          <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+          </svg>
+        </a>
+        <a class="text-gray-400 hover:text-white transition-colors duration-200" href="https://www.linkedin.com/company/kreatewebsites/">
+          <span class="sr-only">LinkedIn</span>
+          <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path clip-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.783-1.75-1.75s.784-1.75 1.75-1.75 1.75.783 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" fill-rule="evenodd"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer></body></html>
+  </div>
+
+
+</body></html>
