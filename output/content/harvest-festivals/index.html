@@ -174,135 +174,6 @@
 </div>
 </div>
 </div>
-</main>
-</div>
-<script>
-        const festivalData = {
-            'makar-sankranti': {
-                labels: ['Ritual & Worship', 'Community Feasting', 'Charity', 'Outdoor Activity'],
-                data: [9, 8, 8, 7],
-                backgroundColor: 'rgba(234, 88, 12, 0.6)',
-                borderColor: 'rgba(234, 88, 12, 1)',
-                canvasId: 'makarSankrantiChart'
-            },
-            'pongal': {
-                labels: ['Ritual & Worship', 'Family Feasting', 'Honoring Nature', 'Decoration'],
-                data: [10, 9, 9, 7],
-                backgroundColor: 'rgba(217, 70, 239, 0.6)',
-                borderColor: 'rgba(217, 70, 239, 1)',
-                canvasId: 'pongalChart'
-            },
-            'bihu': {
-                labels: ['Community Feasting', 'Bonfire Rituals', 'Traditional Games', 'Music & Dance'],
-                data: [10, 8, 7, 6],
-                backgroundColor: 'rgba(22, 163, 74, 0.6)',
-                borderColor: 'rgba(22, 163, 74, 1)',
-                canvasId: 'bihuChart'
-            },
-            'uttarayan': {
-                labels: ['Outdoor Activity', 'Community Spirit', 'Specialty Foods', 'Competition'],
-                data: [10, 9, 7, 8],
-                backgroundColor: 'rgba(37, 99, 235, 0.6)',
-                borderColor: 'rgba(37, 99, 235, 1)',
-                canvasId: 'uttarayanChart'
-            }
-        };
-
-        const charts = {};
-
-        function createOrUpdateChart(festivalId) {
-            const chartData = festivalData[festivalId];
-            if (!chartData) return;
-
-            if (charts[festivalId]) {
-                return;
-            }
-
-            const ctx = document.getElementById(chartData.canvasId).getContext('2d');
-            charts[festivalId] = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: chartData.labels,
-                    datasets: [{
-                        label: 'Importance Score',
-                        data: chartData.data,
-                        backgroundColor: chartData.backgroundColor,
-                        borderColor: chartData.borderColor,
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    indexAxis: 'y',
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        x: {
-                            beginAtZero: true,
-                            max: 10,
-                            grid: {
-                                color: 'rgba(200, 200, 200, 0.2)'
-                            }
-                        },
-                         y: {
-                             grid: {
-                                display: false
-                            }
-                         }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return ` Importance: ${context.raw}`;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const navButtons = document.querySelectorAll('.nav-button');
-            const contentSections = document.querySelectorAll('.content-section');
-
-            function setActiveTab(targetId) {
-                navButtons.forEach(button => {
-                    if (button.dataset.target === targetId) {
-                        button.classList.add('active-tab');
-                        button.classList.remove('inactive-tab');
-                    } else {
-                        button.classList.remove('active-tab');
-                        button.classList.add('inactive-tab');
-                    }
-                });
-
-                contentSections.forEach(section => {
-                    if (section.id === `${targetId}-content`) {
-                        section.classList.remove('hidden');
-                    } else {
-                        section.classList.add('hidden');
-                    }
-                });
-
-                createOrUpdateChart(targetId);
-            }
-
-            navButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const targetId = button.dataset.target;
-                    setActiveTab(targetId);
-                });
-            });
-
-            setActiveTab('overview');
-        });
-
-    </script>
 <footer class="bg-gray-800 text-gray-300">
 <div class="container mx-auto px-6 py-12 lg:px-8">
 <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
@@ -455,6 +326,65 @@
 </ul>
 </div>
 <div>
+<h5 class="text-lg font-semibold text-white mb-4">Lohri Festival</h5>
+<ul class="space-y-2">
+<li>
+<a href="https://www.sankranti.net/lohri-festival/bonefire.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl01_title">Bonefire</a>
+</li>
+<li>
+<a href="https://www.sankranti.net/lohri-festival/dulla-bhatti-song.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl02_title">Dulla-bhatti-song</a>
+</li>
+<li>
+<a href="https://www.sankranti.net/lohri-festival/first-lohri-celebrations.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl03_title">First-lohri-celebrations</a>
+</li>
+<li>
+<a href="https://www.sankranti.net/lohri-festival/how-lohri-changing-with-generations.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl04_title">How-lohri-changing-with-generations</a>
+</li>
+<li>
+<a href="https://www.sankranti.net/lohri-festival/kids-lohri-celebrations.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl05_title">Kids-lohri-celebrations</a>
+</li>
+<li>
+<a href="https://www.sankranti.net/lohri-festival/lohri-food-items.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl06_title">Lohri-food-items</a>
+</li>
+<li>
+<a href="https://www.sankranti.net/lohri-festival/lohri-songs-and-their-meaning.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl07_title">Lohri-songs-and-their-meaning</a>
+</li>
+<li>
+<a href="https://www.sankranti.net/lohri-festival/lohri-songs.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl08_title">Lohri-songs</a>
+</li>
+<li>
+<a href="https://www.sankranti.net/lohri-festival/lohri-special-food-items.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl09_title">Lohri-special-food-items</a>
+</li>
+<li>
+<a href="https://www.sankranti.net/lohri-festival/lohri-wishes-26-a-z.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl10_title">Lohri-wishes-26-a-z</a>
+</li>
+<li>
+<a href="https://www.sankranti.net/lohri-festival/menu-ideas-lohri.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl11_title">Menu-ideas-lohri</a>
+</li>
+<li>
+<a href="https://www.sankranti.net/lohri-festival/music-dance.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl12_title">Music-dance</a>
+</li>
+<li>
+<a href="https://www.sankranti.net/lohri-festival/office-lohri-celebration-ideas.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl13_title">Office-lohri-celebration-ideas</a>
+</li>
+<li>
+<a href="https://www.sankranti.net/lohri-festival/rituals-and-songs.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl14_title">Rituals-and-songs</a>
+</li>
+<li>
+<a href="https://www.sankranti.net/lohri-festival/rituals.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl15_title">Rituals</a>
+</li>
+<li>
+<a href="https://www.sankranti.net/lohri-festival/traditional-sweets.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl16_title">Traditional-sweets</a>
+</li>
+<li>
+<a href="https://www.sankranti.net/lohri-festival/traditonal-lohri-food-items.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl17_title">Traditonal-lohri-food-items</a>
+</li>
+<li>
+<a href="https://www.sankranti.net/lohri-festival/virtual-lohri-festival.html" id="ctl00_ContentPlaceHolder1_RepLinks_ctl18_title">Virtual-lohri-festival</a>
+</li>
+</ul>
+</div>
+<div>
 <h5 class="text-lg font-semibold text-white mb-4">Contact Us</h5>
 <div class="space-y-2">
 <p>Redmond<br/>WA, USA</p>
@@ -495,4 +425,133 @@
 </div>
 </div>
 </div>
-</footer></body></html>
+</footer></main>
+</div>
+<script>
+        const festivalData = {
+            'makar-sankranti': {
+                labels: ['Ritual & Worship', 'Community Feasting', 'Charity', 'Outdoor Activity'],
+                data: [9, 8, 8, 7],
+                backgroundColor: 'rgba(234, 88, 12, 0.6)',
+                borderColor: 'rgba(234, 88, 12, 1)',
+                canvasId: 'makarSankrantiChart'
+            },
+            'pongal': {
+                labels: ['Ritual & Worship', 'Family Feasting', 'Honoring Nature', 'Decoration'],
+                data: [10, 9, 9, 7],
+                backgroundColor: 'rgba(217, 70, 239, 0.6)',
+                borderColor: 'rgba(217, 70, 239, 1)',
+                canvasId: 'pongalChart'
+            },
+            'bihu': {
+                labels: ['Community Feasting', 'Bonfire Rituals', 'Traditional Games', 'Music & Dance'],
+                data: [10, 8, 7, 6],
+                backgroundColor: 'rgba(22, 163, 74, 0.6)',
+                borderColor: 'rgba(22, 163, 74, 1)',
+                canvasId: 'bihuChart'
+            },
+            'uttarayan': {
+                labels: ['Outdoor Activity', 'Community Spirit', 'Specialty Foods', 'Competition'],
+                data: [10, 9, 7, 8],
+                backgroundColor: 'rgba(37, 99, 235, 0.6)',
+                borderColor: 'rgba(37, 99, 235, 1)',
+                canvasId: 'uttarayanChart'
+            }
+        };
+
+        const charts = {};
+
+        function createOrUpdateChart(festivalId) {
+            const chartData = festivalData[festivalId];
+            if (!chartData) return;
+
+            if (charts[festivalId]) {
+                return;
+            }
+
+            const ctx = document.getElementById(chartData.canvasId).getContext('2d');
+            charts[festivalId] = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: chartData.labels,
+                    datasets: [{
+                        label: 'Importance Score',
+                        data: chartData.data,
+                        backgroundColor: chartData.backgroundColor,
+                        borderColor: chartData.borderColor,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 10,
+                            grid: {
+                                color: 'rgba(200, 200, 200, 0.2)'
+                            }
+                        },
+                         y: {
+                             grid: {
+                                display: false
+                            }
+                         }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ` Importance: ${context.raw}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const navButtons = document.querySelectorAll('.nav-button');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            function setActiveTab(targetId) {
+                navButtons.forEach(button => {
+                    if (button.dataset.target === targetId) {
+                        button.classList.add('active-tab');
+                        button.classList.remove('inactive-tab');
+                    } else {
+                        button.classList.remove('active-tab');
+                        button.classList.add('inactive-tab');
+                    }
+                });
+
+                contentSections.forEach(section => {
+                    if (section.id === `${targetId}-content`) {
+                        section.classList.remove('hidden');
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
+
+                createOrUpdateChart(targetId);
+            }
+
+            navButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetId = button.dataset.target;
+                    setActiveTab(targetId);
+                });
+            });
+
+            setActiveTab('overview');
+        });
+
+    </script>
+</body></html>
