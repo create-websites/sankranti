@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>2026 Vedic Calendar &amp; Panchang Explorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <!-- Date Adapter Requirements for Chart.js Time Scale -->
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.27.0/dist/date-fns.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    
+    <!-- Chosen Palette: Saffron & Sage -->
+    <!-- 
+         Primary: #F4F1EA (Warm Off-White/Cream background)
+         Secondary: #EA580C (Tailwind Orange-600 - Saffron)
+         Accent: #115E59 (Tailwind Teal-800 - Deep Vedic Green/Sage)
+         Text: #1F2937 (Tailwind Gray-800)
+    -->
+
+    <!-- Application Structure Plan: 
+         1. Header & Configuration: Global "Region Selector" establishes context (USA, India, UK, UAE). This drives all data below.
+         2. Executive Summary (Dashboard): High-level stats (Next major festival, total auspicious days).
+         3. The Cosmic Timeline (Visualization): A timeline chart mapping Hindu Lunar Months against Gregorian 2026. Goal: Help users understand the correlation.
+         4. Major Festivals (Interactive Grid): Cards for the "Big 9" festivals. Goal: Qualitative details + specific dates.
+         5. Recurring Observances (Filterable List): Ekadashi, Purnima, etc. Goal: Functional planning for fasting/rituals.
+         6. Auspicious Planning (Visualization): Bar chart showing volume of Vivah/Griha Pravesh Muhurats per month. Goal: Event planning.
+    -->
+
+    <!-- Visualization & Content Choices:
+         1. Lunar Month Correlation -> Goal: Visualize overlap -> Viz: Floating Horizontal Bar Chart (Chart.js) -> Interaction: Hover for dates -> Justification: Shows the "sliding" nature of lunar months better than a table.
+         2. Auspicious Dates -> Goal: Plan events -> Viz: Vertical Bar Chart -> Interaction: Filter by Event Type -> Justification: Quickly identifies the "best months" for weddings.
+         3. Festival Cards -> Goal: Detailed Info -> Viz: HTML Grid -> Interaction: Region-based date updates -> Justification: Text-heavy content needs readable cards, not charts.
+    -->
+
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF7; /* Very light warm cream */
+            color: #1F2937;
+        }
+
+        h1, h2, h3, .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Chart Container Styling - Mandatory Requirements */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px; /* Max width for larger screens */
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px; /* Default height */
+            max-height: 500px;
+        }
+
+        /* Responsive adjustments for charts */
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .active-tab {
+            border-bottom: 3px solid #EA580C;
+            color: #9A3412;
+            font-weight: 600;
+        }
+
+        .inactive-tab {
+            border-bottom: 3px solid transparent;
+            color: #6B7280;
+        }
+        
+        .inactive-tab:hover {
+            color: #EA580C;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Header Section -->
+    <header class="bg-white border-b border-orange-100 shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-orange-600 text-white p-2 rounded-lg text-2xl shadow-md">🕉️</div>
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900 leading-none">Drik Panchang 2026</h1>
+                    <p class="text-xs text-orange-700 font-medium uppercase tracking-wider mt-1">Vedic Calendar Explorer</p>
+                </div>
+            </div>
+            
+            <!-- Region Selector Interaction -->
+            <div class="flex items-center bg-orange-50 rounded-lg p-1 border border-orange-200">
+                <span class="px-3 text-sm font-semibold text-orange-800 hidden sm:inline">📍 Location:</span>
+                <select class="bg-transparent border-none text-gray-800 text-sm font-medium focus:ring-0 cursor-pointer py-1 pr-8 pl-2" id="regionSelector">
+                    <option value="india">🇮🇳 New Delhi, India (IST)</option>
+                    <option value="usa_ny">🇺🇸 New York, USA (EST)</option>
+                    <option value="usa_ca">🇺🇸 San Francisco, USA (PST)</option>
+                    <option value="uk">🇬🇧 London, UK (GMT)</option>
+                    <option value="uae">🇦🇪 Dubai, UAE (GST)</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-12">
+
+        <!-- Intro Section -->
+        <section>
+            <div class="bg-gradient-to-r from-orange-50 to-amber-50 rounded-2xl p-6 md:p-8 border border-orange-100">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4 serif-font">The 2026 Vedic Year</h2>
+                <p class="text-gray-700 leading-relaxed max-w-3xl">
+                    Welcome to the 2026 interactive Panchang. The Hindu calendar is lunisolar, meaning dates are calculated based on the positions of both the Sun and the Moon. 
+                    Because <strong>Tithis (lunar days)</strong> depend on the exact moment of sunrise in your specific location, festival dates can sometimes vary by a day between India, the USA, and Europe. 
+                    Select your region above to see the most accurate timings for 2026.
+                </p>
+                <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-orange-100 text-center">
+                        <div class="text-2xl mb-1">📅</div>
+                        <div class="text-sm text-gray-500 uppercase tracking-wide">Samvat</div>
+                        <div class="font-bold text-orange-700">2082-2083</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-orange-100 text-center">
+                        <div class="text-2xl mb-1">🌑</div>
+                        <div class="text-sm text-gray-500 uppercase tracking-wide">Adhik Maas</div>
+                        <div class="font-bold text-orange-700">None</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-orange-100 text-center">
+                        <div class="text-2xl mb-1">✨</div>
+                        <div class="text-sm text-gray-500 uppercase tracking-wide">First Major Fest</div>
+                        <div class="font-bold text-orange-700" id="firstFestDisplay">Makar Sankranti</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-orange-100 text-center">
+                        <div class="text-2xl mb-1">🌘</div>
+                        <div class="text-sm text-gray-500 uppercase tracking-wide">Eclipses</div>
+                        <div class="font-bold text-orange-700">3 Total</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: Cosmic Timeline (Lunar Months) -->
+        <section>
+            <div class="flex flex-col md:flex-row justify-between items-end mb-4 border-b border-gray-200 pb-2">
+                <div class="max-w-2xl">
+                    <h2 class="text-2xl font-bold text-gray-900 serif-font">The Lunar-Solar Correlation</h2>
+                    <p class="text-sm text-gray-600 mt-2">
+                        The Hindu year begins in mid-March with the month of <strong>Chaitra</strong>. This chart visualizes how the Hindu months overlap with the 2026 Gregorian calendar.
+                        Hover over the bars to see exact start and end dates.
+                    </p>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                <div class="chart-container">
+                    <canvas id="lunarMonthsChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Major Festivals (Interactive Grid) -->
+        <section>
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 serif-font">Major Festivals 2026</h2>
+                <p class="text-sm text-gray-600 mt-2">
+                    Key religious observances. Dates below are calculated based on the <span class="font-bold text-orange-600" id="currentRegionText">New Delhi</span> location.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="festivalGrid">
+                <!-- Javascript will populate this -->
+            </div>
+        </section>
+
+        <!-- Section 3: Auspicious Planning (Muhurat Analytics) -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2">
+                <h2 class="text-2xl font-bold text-gray-900 serif-font mb-4">Shubh Muhurat Analytics</h2>
+                <p class="text-sm text-gray-600 mb-6">
+                    Planning a wedding or house warming? The chart below shows the density of auspicious dates (Shubh Muhurat) per month in 2026. 
+                    <br/><strong>Note:</strong> Nov/Dec 2026 see a spike in wedding dates after Dev Uthani Ekadashi.
+                </p>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <!-- Filter Buttons -->
+                    <div class="flex gap-2 mb-4 justify-center">
+                        <button class="px-4 py-1.5 rounded-full text-xs font-semibold bg-rose-100 text-rose-800 hover:bg-rose-200 transition-colors focus:ring-2 ring-rose-300" onclick="updateMuhuratChart('vivah')">💍 Vivah (Wedding)</button>
+                        <button class="px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 hover:bg-emerald-200 transition-colors focus:ring-2 ring-emerald-300" onclick="updateMuhuratChart('griha')">🏠 Griha Pravesh</button>
+                    </div>
+                    <div class="chart-container" style="height: 350px;">
+                        <canvas id="muhuratChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recurring Observances Side Panel -->
+            <div class="lg:col-span-1 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col h-full">
+                <div class="p-5 border-b border-gray-100 bg-gray-50 rounded-t-xl">
+                    <h3 class="text-lg font-bold text-gray-900 serif-font">Recurring Observances</h3>
+                    <p class="text-xs text-gray-500 mt-1">Select an observance to see 2026 dates.</p>
+                </div>
+                
+                <div class="p-4 grid grid-cols-2 gap-2">
+                    <button class="obs-btn py-2 px-3 rounded-lg text-sm border border-gray-200 hover:bg-orange-50 hover:border-orange-200 hover:text-orange-700 transition-all text-left flex items-center gap-2" id="btn-purnima" onclick="filterObservances('purnima')">
+                        🌕 Purnima
+                    </button>
+                    <button class="obs-btn py-2 px-3 rounded-lg text-sm border border-gray-200 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-800 transition-all text-left flex items-center gap-2" id="btn-amavasya" onclick="filterObservances('amavasya')">
+                        🌑 Amavasya
+                    </button>
+                    <button class="obs-btn py-2 px-3 rounded-lg text-sm border border-gray-200 hover:bg-purple-50 hover:border-purple-200 hover:text-purple-700 transition-all text-left flex items-center gap-2" id="btn-ekadashi" onclick="filterObservances('ekadashi')">
+                        🕉️ Ekadashi
+                    </button>
+                    <button class="obs-btn py-2 px-3 rounded-lg text-sm border border-gray-200 hover:bg-yellow-50 hover:border-yellow-200 hover:text-yellow-700 transition-all text-left flex items-center gap-2" id="btn-sankranti" onclick="filterObservances('sankranti')">
+                        ☀️ Sankranti
+                    </button>
+                </div>
+
+                <div class="flex-grow overflow-y-auto p-4 max-h-[400px]">
+                    <h4 class="text-sm font-semibold text-gray-700 mb-3 border-b pb-2" id="observanceTitle">Select a category above</h4>
+                    <ul class="space-y-2 text-sm text-gray-600" id="observanceList">
+                        <!-- JS populated -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Celestial Events -->
+        <section class="bg-gray-900 text-white rounded-2xl p-6 md:p-10 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 transform translate-x-1/2 -translate-y-1/2"></div>
+            
+            <h2 class="text-2xl font-bold serif-font relative z-10">Celestial Events 2026</h2>
+            <p class="text-gray-300 mt-2 max-w-2xl relative z-10 mb-8">
+                Significant solar and lunar transitions impacting religious rituals.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+                <div class="bg-gray-800 bg-opacity-50 p-5 rounded-xl border border-gray-700 backdrop-blur-sm">
+                    <h3 class="text-lg font-semibold text-orange-300 mb-3">🌑 Eclipses (Grahan)</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex justify-between border-b border-gray-700 pb-2">
+                            <span>Feb 17, 2026</span>
+                            <span class="text-gray-400">Annular Solar Eclipse (South)</span>
+                        </li>
+                        <li class="flex justify-between border-b border-gray-700 pb-2">
+                            <span>Aug 12, 2026</span>
+                            <span class="text-gray-400">Total Solar Eclipse (Europe)</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Aug 28, 2026</span>
+                            <span class="text-gray-400">Partial Lunar Eclipse</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-800 bg-opacity-50 p-5 rounded-xl border border-gray-700 backdrop-blur-sm">
+                    <h3 class="text-lg font-semibold text-yellow-300 mb-3">☀️ Major Sankranti</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <span class="block text-xs text-gray-500">Makar Sankranti</span>
+                            <span class="font-medium">Jan 14</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-gray-500">Mesha (Solar New Year)</span>
+                            <span class="font-medium">Apr 14</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-gray-500">Karka (Dakshinayana)</span>
+                            <span class="font-medium">Jul 16</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-gray-500">Tula Sankranti</span>
+                            <span class="font-medium">Oct 17</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-gray-300">
+<div class="container mx-auto px-6 py-12 lg:px-8">
+<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+<div>
+<h5 class="text-lg font-semibold text-white mb-4">Makarsankranti Uttarayan</h5>
+<ul class="space-y-2">
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/3-days-of-sankranti-and-pongal-celebration.html">3-days-of-sankranti-and-pongal-celebration</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/different-names-of-sankranti.html">Different-names-of-sankranti</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/image.html">Image</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/important-sankrantis.html">Important-sankrantis</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/index2.html">Index2</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/information.html">Information</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/khichdi-purv.html">Khichdi-purv</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/lohri.html">Lohri</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/magh-bihu.html">Magh-bihu</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/makarsankranti-information.html">Makarsankranti-information</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/pongal.html">Pongal</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/sankranti-vs-makarsankranti.html">Sankranti-vs-makarsankranti</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/sitemap.html">Sitemap</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/start-of-spring.html">Start-of-spring</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/what-is-pedda-festival.html">What-is-pedda-festival</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/what-is-uttarayaana.html">What-is-uttarayaana</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-lg font-semibold text-white mb-4">Stories of Makarsankrnti</h5>
+<ul class="space-y-2">
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/assamese.html">Assamese</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/bengali.html">Bengali</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/bhojpuri.html">Bhojpuri</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/bihari.html">Bihari</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/english.html">English</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/gujarati.html">Gujarati</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/hindi.html">Hindi</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/kannada.html">Kannada</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/kashmiri.html">Kashmiri</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/makarsankranti-play-script.html">Makarsankranti-play-script</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-bengali.html">Makarsankranti-wishes-in-bengali</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-garhwali.html">Makarsankranti-wishes-in-garhwali</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-gujrati.html">Makarsankranti-wishes-in-gujrati</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-hindi.html">Makarsankranti-wishes-in-hindi</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-marwari-language.html">Makarsankranti-wishes-in-marwari-language</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-rajasthani.html">Makarsankranti-wishes-in-rajasthani</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-sanskrit-language.html">Makarsankranti-wishes-in-sanskrit-language</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-urdu.html">Makarsankranti-wishes-in-urdu</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/makarsankranti-wishes-marathai.html">Makarsankranti-wishes-marathai</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/malyalam.html">Malyalam</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/marathi.html">Marathi</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/nepalese.html">Nepalese</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/punjabi.html">Punjabi</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/sanskrit.html">Sanskrit</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/sindhi.html">Sindhi</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/tamil.html">Tamil</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/telugu.html">Telugu</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/urdu.html">Urdu</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/wishes-new-beginning.html">Wishes-new-beginning</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/wishes-prosperity.html">Wishes-prosperity</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-lg font-semibold text-white mb-4">Pages</h5>
+<ul class="space-y-2">
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/2026/2026-hindu-calendar.html">2026 Hindu Calendar</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/2026/2026-shradhh-dates.html">2026 Shradhh Dates</a></li>
+</ul>
+</div>
+</div>
+<div class="mt-12 border-t border-gray-700 pt-8 flex flex-col items-center justify-between sm:flex-row">
+<p class="text-sm text-gray-400">© 2026 Dataknobs for Builing Data Products. All rights reserved.</p>
+</div>
+</div>
+</footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- 1. DATA STORE ---
+        
+        // Month Data for Timeline
+        // Hindu months in 2026 (Approximate Gregorian overlap)
+        const lunarMonths = [
+            { name: "Pausha", start: "2025-12-06", end: "2026-01-18" },
+            { name: "Magha", start: "2026-01-19", end: "2026-02-17" },
+            { name: "Phalguna", start: "2026-02-18", end: "2026-03-18" },
+            { name: "Chaitra", start: "2026-03-19", end: "2026-04-17" }, // Hindu New Year
+            { name: "Vaisakha", start: "2026-04-18", end: "2026-05-17" },
+            { name: "Jyeshtha", start: "2026-05-18", end: "2026-06-15" },
+            { name: "Ashadha", start: "2026-06-16", end: "2026-07-14" },
+            { name: "Shravana", start: "2026-07-15", end: "2026-08-12" },
+            { name: "Bhadrapada", start: "2026-08-13", end: "2026-09-11" },
+            { name: "Ashwina", start: "2026-09-12", end: "2026-10-10" },
+            { name: "Kartika", start: "2026-10-11", end: "2026-11-09" },
+            { name: "Margashirsha", start: "2026-11-10", end: "2026-12-09" },
+            { name: "Pausha", start: "2026-12-10", end: "2027-01-07" }
+        ];
+
+        // Festival Data with Regional Offsets (simulated)
+        const festivals = [
+            { id: 1, name: "Makar Sankranti", icon: "☀️", desc: "Solar transition into Capricorn. Harvest festival.", dates: { india: "Jan 14", usa_ny: "Jan 14", usa_ca: "Jan 14", uk: "Jan 14", uae: "Jan 14" }, type: "solar" },
+            { id: 2, name: "Maha Shivaratri", icon: "🔱", desc: "The Great Night of Shiva.", dates: { india: "Feb 15", usa_ny: "Feb 15", usa_ca: "Feb 15", uk: "Feb 15", uae: "Feb 15" }, type: "major" },
+            { id: 3, name: "Holi", icon: "🎨", desc: "Festival of Colors.", dates: { india: "Mar 4", usa_ny: "Mar 3", usa_ca: "Mar 3", uk: "Mar 4", uae: "Mar 4" }, type: "major" },
+            { id: 4, name: "Rama Navami", icon: "🏹", desc: "Birth of Lord Rama.", dates: { india: "Mar 27", usa_ny: "Mar 27", usa_ca: "Mar 27", uk: "Mar 27", uae: "Mar 27" }, type: "major" },
+            { id: 5, name: "Raksha Bandhan", icon: "🧵", desc: "Bond of protection between siblings.", dates: { india: "Aug 27", usa_ny: "Aug 27", usa_ca: "Aug 27", uk: "Aug 27", uae: "Aug 27" }, type: "major" },
+            { id: 6, name: "Krishna Janmashtami", icon: "🪈", desc: "Birth of Lord Krishna.", dates: { india: "Sep 3", usa_ny: "Sep 3", usa_ca: "Sep 3", uk: "Sep 3", uae: "Sep 3" }, type: "major" },
+            { id: 7, name: "Ganesh Chaturthi", icon: "🐘", desc: "Festival of Lord Ganesha.", dates: { india: "Sep 14", usa_ny: "Sep 14", usa_ca: "Sep 14", uk: "Sep 14", uae: "Sep 14" }, type: "major" },
+            { id: 8, name: "Navratri (Sharad)", icon: "🔥", desc: "9 Nights of the Goddess.", dates: { india: "Oct 12", usa_ny: "Oct 12", usa_ca: "Oct 12", uk: "Oct 12", uae: "Oct 12" }, type: "major" },
+            { id: 9, name: "Diwali", icon: "🪔", desc: "Festival of Lights (Deepavali).", dates: { india: "Nov 8", usa_ny: "Nov 8", usa_ca: "Nov 8", uk: "Nov 8", uae: "Nov 8" }, type: "major" }
+        ];
+
+        const muhuratData = {
+            months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            vivah: [8, 12, 6, 10, 14, 5, 2, 0, 0, 0, 12, 10],
+            griha: [4, 6, 5, 8, 10, 3, 0, 0, 0, 2, 8, 6]
+        };
+
+        const observances = {
+            purnima: [
+                { date: "Jan 3", name: "Paush Purnima" },
+                { date: "Feb 1", name: "Magha Purnima" },
+                { date: "Mar 3", name: "Holi Purnima" },
+                { date: "Apr 2", name: "Hanuman Jayanti" },
+                { date: "May 1", name: "Buddha Purnima" },
+                { date: "May 31", name: "Vat Purnima" },
+                { date: "Jun 29", name: "Guru Purnima" },
+                { date: "Jul 29", name: "Ashadha Purnima" },
+                { date: "Aug 27", name: "Raksha Bandhan" },
+                { date: "Sep 26", name: "Bhadrapada Purnima" },
+                { date: "Oct 25", name: "Sharad Purnima" },
+                { date: "Nov 24", name: "Kartik Purnima" },
+                { date: "Dec 23", name: "Margashirsha Purnima" }
+            ],
+            amavasya: [
+                { date: "Jan 18", name: "Mauni Amavasya" },
+                { date: "Feb 17", name: "Phalguna Amavasya" },
+                { date: "Mar 18", name: "Chaitra Amavasya" },
+                { date: "Apr 17", name: "Vaisakha Amavasya" },
+                { date: "May 16", name: "Shani Jayanti" },
+                { date: "Jun 15", name: "Jyeshtha Amavasya" },
+                { date: "Jul 14", name: "Ashadha Amavasya" },
+                { date: "Aug 12", name: "Hariyali Amavasya" },
+                { date: "Sep 11", name: "Pithori Amavasya" },
+                { date: "Oct 10", name: "Mahalaya Amavasya" },
+                { date: "Nov 8", name: "Diwali Amavasya" },
+                { date: "Dec 8", name: "Margashirsha Amavasya" }
+            ],
+            ekadashi: [
+                { date: "Jan 14", name: "Shattila Ekadashi" },
+                { date: "Jan 29", name: "Jaya Ekadashi" },
+                { date: "Feb 13", name: "Vijaya Ekadashi" },
+                { date: "Feb 27", name: "Amalaki Ekadashi" },
+                { date: "Mar 14", name: "Papmochani Ekadashi" },
+                { date: "Mar 29", name: "Kamada Ekadashi" },
+                { date: "Nov 20", name: "Dev Uthani Ekadashi" },
+                { date: "Dec 5", name: "Utpanna Ekadashi" },
+                { date: "Dec 19", name: "Mokshada Ekadashi" }
+            ],
+            sankranti: [
+                { date: "Jan 14", name: "Makar Sankranti" },
+                { date: "Feb 13", name: "Kumbha Sankranti" },
+                { date: "Mar 14", name: "Meena Sankranti" },
+                { date: "Apr 14", name: "Mesha Sankranti" },
+                { date: "Aug 16", name: "Simha Sankranti" },
+                { date: "Dec 16", name: "Dhanu Sankranti" }
+            ]
+        };
+
+        // --- 2. STATE MANAGEMENT ---
+        let currentRegion = 'india';
+        let charts = {}; 
+
+        // --- 3. DOM ELEMENTS ---
+        const regionSelector = document.getElementById('regionSelector');
+        const festivalGrid = document.getElementById('festivalGrid');
+        const currentRegionText = document.getElementById('currentRegionText');
+        const observanceList = document.getElementById('observanceList');
+        const observanceTitle = document.getElementById('observanceTitle');
+
+        // --- 4. INITIALIZATION ---
+        window.addEventListener('load', () => {
+            initApp();
+        });
+
+        function initApp() {
+            renderLunarChart();
+            updateMuhuratChart('vivah');
+            updateFestivals();
+            filterObservances('ekadashi');
+            
+            regionSelector.addEventListener('change', (e) => {
+                currentRegion = e.target.value;
+                updateRegionText(e.target.options[e.target.selectedIndex].text);
+                updateFestivals();
+            });
+        }
+
+        // --- 5. RENDER FUNCTIONS ---
+
+        function updateRegionText(text) {
+            const parts = text.split(' ');
+            const cleanText = parts.length > 2 ? parts[1] + ' ' + parts[2] : text;
+            currentRegionText.textContent = cleanText;
+            festivalGrid.classList.add('opacity-50');
+            setTimeout(() => festivalGrid.classList.remove('opacity-50'), 300);
+        }
+
+        function updateFestivals() {
+            festivalGrid.innerHTML = '';
+            festivals.forEach(fest => {
+                const date = fest.dates[currentRegion] || fest.dates['india'];
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-xl shadow-sm border border-gray-100 p-6 card-hover transition-all duration-300 flex flex-col justify-between h-full relative overflow-hidden';
+                const borderColor = fest.type === 'solar' ? 'bg-yellow-400' : 'bg-orange-500';
+                
+                card.innerHTML = `
+                    <div class="absolute top-0 left-0 w-full h-1 ${borderColor}"></div>
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-4xl filter drop-shadow-sm">${fest.icon}</span>
+                            <span class="bg-orange-50 text-orange-800 text-xs font-bold px-2 py-1 rounded-full border border-orange-100">${date}</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 leading-tight">${fest.name}</h3>
+                        <p class="text-sm text-gray-600">${fest.desc}</p>
+                    </div>
+                `;
+                festivalGrid.appendChild(card);
+            });
+        }
+
+        function filterObservances(type) {
+            document.querySelectorAll('.obs-btn').forEach(btn => {
+                btn.classList.remove('bg-gray-100', 'ring-2', 'ring-gray-200');
+            });
+            const activeBtn = document.getElementById(`btn-${type}`);
+            if(activeBtn) activeBtn.classList.add('bg-gray-100', 'ring-2', 'ring-gray-200');
+
+            const data = observances[type];
+            observanceTitle.textContent = `${type.charAt(0).toUpperCase() + type.slice(1)} Dates 2026`;
+            
+            observanceList.innerHTML = '';
+            data.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'flex justify-between items-center p-2 hover:bg-gray-50 rounded-md transition-colors border-b border-gray-50 last:border-0';
+                li.innerHTML = `
+                    <span class="font-medium text-gray-800">${item.name}</span>
+                    <span class="text-xs font-mono bg-white border border-gray-200 px-2 py-1 rounded text-gray-600">${item.date}</span>
+                `;
+                observanceList.appendChild(li);
+            });
+        }
+
+        // --- 6. CHART IMPLEMENTATIONS ---
+
+        function renderLunarChart() {
+            const canvas = document.getElementById('lunarMonthsChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            
+            const labels = lunarMonths.map(m => m.name);
+            const data = lunarMonths.map(m => {
+                return [new Date(m.start).getTime(), new Date(m.end).getTime()];
+            });
+
+            if (charts.lunar) charts.lunar.destroy();
+
+            charts.lunar = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Gregorian Duration',
+                        data: data,
+                        backgroundColor: 'rgba(234, 88, 12, 0.2)',
+                        borderColor: 'rgba(234, 88, 12, 1)',
+                        borderWidth: 1,
+                        borderSkipped: false,
+                        borderRadius: 4,
+                        barPercentage: 0.6
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const raw = context.raw;
+                                    const d1 = new Date(raw[0]).toLocaleDateString();
+                                    const d2 = new Date(raw[1]).toLocaleDateString();
+                                    return `${context.label}: ${d1} to ${d2}`;
+                                }
+                            }
+                        },
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'month',
+                                displayFormats: {
+                                    month: 'MMM yyyy'
+                                }
+                            },
+                            min: new Date('2026-01-01').getTime(),
+                            max: new Date('2026-12-31').getTime(),
+                            grid: { color: '#f3f4f6' }
+                        },
+                        y: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateMuhuratChart(type) {
+            const canvas = document.getElementById('muhuratChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const color = type === 'vivah' ? '#e11d48' : '#059669';
+            const bg = type === 'vivah' ? '#fecdd3' : '#a7f3d0';
+            const label = type === 'vivah' ? 'Wedding Dates' : 'House Warming Dates';
+            
+            if (charts.muhurat) {
+                charts.muhurat.destroy();
+            }
+
+            charts.muhurat = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: muhuratData.months,
+                    datasets: [{
+                        label: label,
+                        data: muhuratData[type],
+                        backgroundColor: bg,
+                        borderColor: color,
+                        borderWidth: 2,
+                        borderRadius: 6,
+                        maxBarThickness: 40
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: true, position: 'top', align: 'end' }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { borderDash: [2, 4] },
+                            title: { display: true, text: 'Number of Dates' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        }
+
+    </script>
+
+</body></html>

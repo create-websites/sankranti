@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+
+  <title>Shradh / Pitru Paksha Dates 2026 (Tithi-wise Calendar)</title>
+  <meta content="Shradh (Pitru Paksha) 2026 tithi-wise calendar from Sept 26 to Oct 10, with key observances, timing (Aparahna Kaal), diet and ritual tips." name="description"/>
+  <meta content="Shradh 2026, Pitru Paksha 2026, Shraddha dates 2026, tithi wise calendar, Mahalaya 2026, Sarva Pitru Amavasya, Maha Bharani Shradh, Avidhava Navami, Aparahna Kaal" name="keywords"/>
+
+  <style>
+    :root{
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --muted2:#94a3b8;
+      --border:#e2e8f0;
+      --soft:#f1f5f9;
+      --shadow: 0 1px 2px rgba(15,23,42,.06), 0 6px 18px rgba(15,23,42,.06);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:var(--bg);
+      color:var(--text);
+    }
+    .container{max-width:1100px; margin:0 auto; padding:28px 16px 56px;}
+    .header{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+    h1{margin:0; font-size:26px; letter-spacing:-.02em;}
+    .sub{margin-top:8px; color:var(--muted); line-height:1.5}
+
+    .controls{
+      margin-top:16px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .search{display:flex; gap:10px; flex:1; min-width:240px;}
+    input[type="search"]{
+      width:100%;
+      padding:12px 14px;
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:#fff;
+      outline:none;
+      font-size:14px;
+    }
+    input[type="search"]:focus{border-color:#cbd5e1; box-shadow:0 0 0 4px rgba(148,163,184,.20)}
+
+    .check{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:#fff;
+      color:var(--muted);
+      font-size:14px;
+      box-shadow:0 1px 0 rgba(15,23,42,.03);
+      user-select:none;
+    }
+
+    .cards{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:12px;
+    }
+    @media (max-width:900px){ .cards{grid-template-columns:1fr;}}
+
+    .mini{
+      border:1px solid var(--border);
+      background:var(--soft);
+      border-radius:22px;
+      padding:14px;
+    }
+    .mini .k{font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted2)}
+    .mini .v{margin-top:6px; font-size:14px; font-weight:600; color:var(--text)}
+
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 2fr 1fr;
+      gap:16px;
+    }
+    @media (max-width:1000px){ .grid{grid-template-columns:1fr;}}
+
+    .panel{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+    .panel-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 16px;
+      border-bottom:1px solid var(--border);
+    }
+    .panel-header h2{margin:0; font-size:16px;}
+    .hint{font-size:12px; color:var(--muted2)}
+
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      font-size:14px;
+    }
+    thead th{
+      background:var(--soft);
+      color:var(--muted2);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      padding:12px 14px;
+      border-bottom:1px solid var(--border);
+    }
+    tbody td{
+      padding:12px 14px;
+      border-bottom:1px solid var(--border);
+      vertical-align:top;
+    }
+    tbody tr{cursor:pointer; transition:background .12s ease;}
+    tbody tr:hover{background:#f8fafc;}
+    tbody tr.selected{background:#f1f5f9;}
+    .date{font-weight:700}
+    .muted{color:var(--muted)}
+    .tags{display:flex; flex-wrap:wrap; gap:8px}
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      padding:2px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:#fff;
+      font-size:12px;
+      color:var(--muted);
+      box-shadow:0 1px 0 rgba(15,23,42,.02);
+      white-space:nowrap;
+    }
+
+    .aside{padding:16px;}
+    .aside h2{margin:0; font-size:16px;}
+    .aside .big{margin-top:10px; font-size:20px; font-weight:800; letter-spacing:-.02em}
+    .aside .when{margin-top:6px; font-size:13px; color:var(--muted)}
+
+    .box{
+      margin-top:14px;
+      background:var(--soft);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:14px;
+    }
+    .box .k{font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted2)}
+    .box p{margin:8px 0 0; color:var(--muted); font-size:14px; line-height:1.5}
+    .box ul{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:14px; line-height:1.6}
+
+    .footer{margin-top:18px; text-align:center; font-size:12px; color:var(--muted2);}
+    .sr-only{position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;}
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <section aria-label="Shradh 2026 overview" class="header">
+      <h1>Shradh / Pitru Paksha Dates (2026)</h1>
+      <div class="sub">
+        In 2026, Pitru Paksha begins on <strong>September 26</strong> and concludes on <strong>October 10</strong>.
+        Shradh is traditionally performed on the tithi (lunar day) that matches the ancestor’s passing.
+      </div>
+
+      <div class="controls">
+        <div class="search">
+          <label class="sr-only" for="q">Search</label>
+          <input autocomplete="off" id="q" placeholder="Search date, tithi, notes…" type="search"/>
+        </div>
+
+        <label class="check" for="onlyKey">
+          <input id="onlyKey" type="checkbox"/>
+          Show only key days
+        </label>
+      </div>
+
+      <div aria-label="Quick tips" class="cards" role="list">
+        <div class="mini" role="listitem">
+          <div class="k">Best time</div>
+          <div class="v">Aparahna Kaal (afternoon), typically <span style="white-space:nowrap;">1:30 PM – 3:55 PM</span></div>
+        </div>
+        <div class="mini" role="listitem">
+          <div class="k">Diet</div>
+          <div class="v">Sattvic diet (avoid onion, garlic, non-veg)</div>
+        </div>
+        <div class="mini" role="listitem">
+          <div class="k">Core components</div>
+          <div class="v">Tarpan &amp; food offering (Brahman Bhoj)</div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Calendar and details" class="grid">
+      <div aria-label="Shradh 2026 calendar" class="panel">
+        <div class="panel-header">
+          <h2>Calendar (Tithi-wise)</h2>
+          <div class="hint">Click a row for details</div>
+        </div>
+
+        <div style="overflow:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th style="min-width:120px;">Date</th>
+                <th style="min-width:110px;">Day</th>
+                <th style="min-width:240px;">Shradh Tithi</th>
+                <th style="min-width:170px;">Tags</th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+
+        <div style="padding:12px 16px; border-top:1px solid var(--border);">
+          <div class="hint">Tip: If the exact tithi is unknown, Sarva Pitru Amavasya (Mahalaya) is performed for all ancestors.</div>
+        </div>
+      </div>
+
+      <aside aria-label="Selected day details" class="panel">
+        <div class="aside">
+          <h2>Selected day</h2>
+          <div class="when" id="selectedWhen"></div>
+          <div class="big" id="selectedTitle"></div>
+
+          <div class="tags" id="selectedTags" style="margin-top:12px;"></div>
+
+          <div class="box">
+            <div class="k">Notes</div>
+            <p id="selectedNote"></p>
+          </div>
+
+          <div class="box">
+            <div class="k">Suggested checklist</div>
+            <ul>
+              <li>Perform rituals during Aparahna Kaal (afternoon).</li>
+              <li>Offer water (Tarpan) with remembrance.</li>
+              <li>Offer food / charity (Brahman Bhoj) as customary.</li>
+              <li>Keep meals sattvic for the day.</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <div class="k">Important observances</div>
+            <ul>
+              <li><strong>Maha Bharani Shradh</strong> (Sept 29): highly auspicious; believed as meritorious as performing Shradh in Gaya.</li>
+              <li><strong>Avidhava Navami</strong> (Oct 4): dedicated to deceased mothers and married women who passed away before their husbands.</li>
+              <li><strong>Sarva Pitru Amavasya (Mahalaya)</strong> (Oct 10): most significant day; intended for all ancestors if tithi is unknown.</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="bg-gray-800 text-gray-300">
+<div class="container mx-auto px-6 py-12 lg:px-8">
+<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+<div>
+<h5 class="text-lg font-semibold text-white mb-4">Makarsankranti Uttarayan</h5>
+<ul class="space-y-2">
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/3-days-of-sankranti-and-pongal-celebration.html">3-days-of-sankranti-and-pongal-celebration</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/different-names-of-sankranti.html">Different-names-of-sankranti</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/image.html">Image</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/important-sankrantis.html">Important-sankrantis</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/index2.html">Index2</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/information.html">Information</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/khichdi-purv.html">Khichdi-purv</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/lohri.html">Lohri</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/magh-bihu.html">Magh-bihu</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/makarsankranti-information.html">Makarsankranti-information</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/pongal.html">Pongal</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/sankranti-vs-makarsankranti.html">Sankranti-vs-makarsankranti</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/sitemap.html">Sitemap</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/start-of-spring.html">Start-of-spring</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/what-is-pedda-festival.html">What-is-pedda-festival</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/what-is-uttarayaana.html">What-is-uttarayaana</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-lg font-semibold text-white mb-4">Stories of Makarsankrnti</h5>
+<ul class="space-y-2">
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/assamese.html">Assamese</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/bengali.html">Bengali</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/bhojpuri.html">Bhojpuri</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/bihari.html">Bihari</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/english.html">English</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/gujarati.html">Gujarati</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/hindi.html">Hindi</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/kannada.html">Kannada</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/kashmiri.html">Kashmiri</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/makarsankranti-play-script.html">Makarsankranti-play-script</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-bengali.html">Makarsankranti-wishes-in-bengali</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-garhwali.html">Makarsankranti-wishes-in-garhwali</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-gujrati.html">Makarsankranti-wishes-in-gujrati</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-hindi.html">Makarsankranti-wishes-in-hindi</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-marwari-language.html">Makarsankranti-wishes-in-marwari-language</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-rajasthani.html">Makarsankranti-wishes-in-rajasthani</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-sanskrit-language.html">Makarsankranti-wishes-in-sanskrit-language</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-urdu.html">Makarsankranti-wishes-in-urdu</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/makarsankranti-wishes-marathai.html">Makarsankranti-wishes-marathai</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/malyalam.html">Malyalam</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/marathi.html">Marathi</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/nepalese.html">Nepalese</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/punjabi.html">Punjabi</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/sanskrit.html">Sanskrit</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/sindhi.html">Sindhi</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/tamil.html">Tamil</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/telugu.html">Telugu</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/urdu.html">Urdu</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/wishes-new-beginning.html">Wishes-new-beginning</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/wishes/wishes-prosperity.html">Wishes-prosperity</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-lg font-semibold text-white mb-4">Pages</h5>
+<ul class="space-y-2">
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/2026/2026-hindu-calendar.html">2026 Hindu Calendar</a></li>
+<li><a class="hover:text-white hover:underline transition-colors duration-200" href="https://www.sankranti.net/2026/2026-shradhh-dates.html">2026 Shradhh Dates</a></li>
+</ul>
+</div>
+</div>
+<div class="mt-12 border-t border-gray-700 pt-8 flex flex-col items-center justify-between sm:flex-row">
+<p class="text-sm text-gray-400">© 2026 Dataknobs for Builing Data Products. All rights reserved.</p>
+</div>
+</div>
+</footer>
+  </div>
+
+  <script>
+    const DATA = [
+      { dateISO:"2026-09-26", dateLabel:"Sept 26, 2026", day:"Saturday", tithi:"Purnima Shradh", tags:["Key"], note:"Pitru Paksha begins. Perform Shradh on the tithi matching the ancestor’s passing." },
+      { dateISO:"2026-09-27", dateLabel:"Sept 27, 2026", day:"Sunday", tithi:"Pratipada Shradh", tags:[], note:"" },
+      { dateISO:"2026-09-28", dateLabel:"Sept 28, 2026", day:"Monday", tithi:"Dwitiya Shradh", tags:[], note:"" },
+      { dateISO:"2026-09-29", dateLabel:"Sept 29, 2026", day:"Tuesday", tithi:"Tritiya Shradh (Maha Bharani)", tags:["Auspicious"], note:"Maha Bharani Shradh: considered highly auspicious; performing Shradh on this day is believed to be as meritorious as performing it in Gaya." },
+      { dateISO:"2026-09-30", dateLabel:"Sept 30, 2026", day:"Wednesday", tithi:"Chaturthi / Panchami Shradh", tags:[], note:"" },
+      { dateISO:"2026-10-01", dateLabel:"Oct 1, 2026", day:"Thursday", tithi:"Shashthi Shradh", tags:[], note:"" },
+      { dateISO:"2026-10-02", dateLabel:"Oct 2, 2026", day:"Friday", tithi:"Saptami Shradh", tags:[], note:"" },
+      { dateISO:"2026-10-03", dateLabel:"Oct 3, 2026", day:"Saturday", tithi:"Ashtami Shradh", tags:[], note:"" },
+      { dateISO:"2026-10-04", dateLabel:"Oct 4, 2026", day:"Sunday", tithi:"Navami Shradh (Avidhava Navami)", tags:["Dedicated"], note:"Avidhava Navami: dedicated to deceased mothers and married women who passed away before their husbands." },
+      { dateISO:"2026-10-05", dateLabel:"Oct 5, 2026", day:"Monday", tithi:"Dashami Shradh", tags:[], note:"" },
+      { dateISO:"2026-10-06", dateLabel:"Oct 6, 2026", day:"Tuesday", tithi:"Ekadashi Shradh", tags:[], note:"" },
+      { dateISO:"2026-10-07", dateLabel:"Oct 7, 2026", day:"Wednesday", tithi:"Dwadashi Shradh (Magha Shradh)", tags:[], note:"" },
+      { dateISO:"2026-10-08", dateLabel:"Oct 8, 2026", day:"Thursday", tithi:"Trayodashi Shradh", tags:[], note:"" },
+      { dateISO:"2026-10-09", dateLabel:"Oct 9, 2026", day:"Friday", tithi:"Chaturdashi Shradh", tags:[], note:"" },
+      { dateISO:"2026-10-10", dateLabel:"Oct 10, 2026", day:"Saturday", tithi:"Sarva Pitru Amavasya (Mahalaya)", tags:["Most Significant"], note:"Sarva Pitru Amavasya: the most significant day, intended for all ancestors—especially if the specific tithi of passing is unknown." },
+    ];
+
+    const $ = (sel) => document.querySelector(sel);
+    const rowsEl = $("#rows");
+    const qEl = $("#q");
+    const onlyKeyEl = $("#onlyKey");
+
+    let selectedISO = DATA[0].dateISO;
+
+    function formatDateLong(iso){
+      try{
+        return new Date(iso + "T12:00:00").toLocaleDateString(undefined, {
+          weekday: "long", year: "numeric", month: "long", day: "numeric"
+        });
+      }catch{ return iso; }
+    }
+
+    function isKey(row){
+      return Array.isArray(row.tags) && row.tags.length > 0;
+    }
+
+    function matches(row, q){
+      if(!q) return true;
+      const hay = [
+        row.dateLabel, row.day, row.tithi, row.note || "", (row.tags||[]).join(" ")
+      ].join(" ").toLowerCase();
+      return hay.includes(q);
+    }
+
+    function clear(el){ while(el.firstChild) el.removeChild(el.firstChild); }
+
+    function makeTag(text){
+      const s = document.createElement("span");
+      s.className = "tag";
+      s.textContent = text;
+      return s;
+    }
+
+    function renderDetails(row){
+      $("#selectedWhen").textContent = formatDateLong(row.dateISO);
+      $("#selectedTitle").textContent = row.tithi;
+
+      const tagsWrap = $("#selectedTags");
+      clear(tagsWrap);
+      if(row.tags && row.tags.length){
+        row.tags.forEach(t => tagsWrap.appendChild(makeTag(t)));
+      } else {
+        tagsWrap.appendChild(makeTag("Standard"));
+      }
+
+      $("#selectedNote").textContent = row.note && row.note.trim()
+        ? row.note
+        : "No special observance noted for this day.";
+    }
+
+    function renderTable(){
+      const q = (qEl.value || "").trim().toLowerCase();
+      const onlyKey = !!onlyKeyEl.checked;
+
+      const filtered = DATA.filter(row => {
+        if(onlyKey && !isKey(row)) return false;
+        return matches(row, q);
+      });
+
+      // If current selection isn't visible under filters, select first visible row (no recursion)
+      if(filtered.length && !filtered.some(r => r.dateISO === selectedISO)){
+        selectedISO = filtered[0].dateISO;
+        renderDetails(filtered[0]);
+      }
+
+      clear(rowsEl);
+
+      filtered.forEach(row => {
+        const tr = document.createElement("tr");
+        if(row.dateISO === selectedISO) tr.classList.add("selected");
+
+        const tdDate = document.createElement("td");
+        tdDate.className = "date";
+        tdDate.textContent = row.dateLabel;
+
+        const tdDay = document.createElement("td");
+        tdDay.className = "muted";
+        tdDay.textContent = row.day;
+
+        const tdTithi = document.createElement("td");
+        tdTithi.textContent = row.tithi;
+
+        const tdTags = document.createElement("td");
+        const tagsWrap = document.createElement("div");
+        tagsWrap.className = "tags";
+
+        if(row.tags && row.tags.length){
+          row.tags.forEach(t => tagsWrap.appendChild(makeTag(t)));
+        } else {
+          const dash = document.createElement("span");
+          dash.className = "muted";
+          dash.textContent = "—";
+          tagsWrap.appendChild(dash);
+        }
+
+        tdTags.appendChild(tagsWrap);
+
+        tr.appendChild(tdDate);
+        tr.appendChild(tdDay);
+        tr.appendChild(tdTithi);
+        tr.appendChild(tdTags);
+
+        tr.addEventListener("click", () => {
+          selectedISO = row.dateISO;
+          renderDetails(row);
+          renderTable();
+        });
+
+        rowsEl.appendChild(tr);
+      });
+
+      // Edge case: nothing matches
+      if(!filtered.length){
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+        td.colSpan = 4;
+        td.className = "muted";
+        td.style.padding = "16px 14px";
+        td.textContent = "No results. Try clearing the search or turning off “key days only”.";
+        tr.appendChild(td);
+        rowsEl.appendChild(tr);
+      }
+    }
+
+    // Init
+    renderDetails(DATA[0]);
+    renderTable();
+
+    qEl.addEventListener("input", renderTable);
+    onlyKeyEl.addEventListener("change", renderTable);
+  </script>
+
+</body></html>
