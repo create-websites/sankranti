@@ -1,0 +1,205 @@
+<footer class="bg-gray-800 text-gray-300">
+  <div class="container mx-auto px-6 py-12 lg:px-8">
+
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+      
+      <div>
+        <h5 class="text-lg font-semibold text-white mb-4">Makarsankranti Uttarayan</h5>
+        <ul class="space-y-2">
+          <li><a href="https://www.sankranti.net/3-days-of-sankranti-and-pongal-celebration.html" class="hover:text-white hover:underline transition-colors duration-200">3-days-of-sankranti-and-pongal-celebration</a></li>
+          <li><a href="https://www.sankranti.net/different-names-of-sankranti.html" class="hover:text-white hover:underline transition-colors duration-200">Different-names-of-sankranti</a></li>
+          <li><a href="https://www.sankranti.net/image.html" class="hover:text-white hover:underline transition-colors duration-200">Image</a></li>
+          <li><a href="https://www.sankranti.net/important-sankrantis.html" class="hover:text-white hover:underline transition-colors duration-200">Important-sankrantis</a></li>
+          <li><a href="https://www.sankranti.net/index2.html" class="hover:text-white hover:underline transition-colors duration-200">Index2</a></li>
+          <li><a href="https://www.sankranti.net/information.html" class="hover:text-white hover:underline transition-colors duration-200">Information</a></li>
+          <li><a href="https://www.sankranti.net/khichdi-purv.html" class="hover:text-white hover:underline transition-colors duration-200">Khichdi-purv</a></li>
+          <li><a href="https://www.sankranti.net/lohri.html" class="hover:text-white hover:underline transition-colors duration-200">Lohri</a></li>
+          <li><a href="https://www.sankranti.net/magh-bihu.html" class="hover:text-white hover:underline transition-colors duration-200">Magh-bihu</a></li>
+          <li><a href="https://www.sankranti.net/makarsankranti-information.html" class="hover:text-white hover:underline transition-colors duration-200">Makarsankranti-information</a></li>
+          <li><a href="https://www.sankranti.net/pongal.html" class="hover:text-white hover:underline transition-colors duration-200">Pongal</a></li>
+          <li><a href="https://www.sankranti.net/sankranti-vs-makarsankranti.html" class="hover:text-white hover:underline transition-colors duration-200">Sankranti-vs-makarsankranti</a></li>
+          <li><a href="https://www.sankranti.net/sitemap.html" class="hover:text-white hover:underline transition-colors duration-200">Sitemap</a></li>
+          <li><a href="https://www.sankranti.net/start-of-spring.html" class="hover:text-white hover:underline transition-colors duration-200">Start-of-spring</a></li>
+          <li><a href="https://www.sankranti.net/what-is-pedda-festival.html" class="hover:text-white hover:underline transition-colors duration-200">What-is-pedda-festival</a></li>
+          <li><a href="https://www.sankranti.net/what-is-uttarayaana.html" class="hover:text-white hover:underline transition-colors duration-200">What-is-uttarayaana</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="text-lg font-semibold text-white mb-4">Stories of Makarsankrnti</h5>
+        <ul class="space-y-2">
+          <li><a href="https://www.sankranti.net/wishes/assamese.html" class="hover:text-white hover:underline transition-colors duration-200">Assamese</a></li>
+          <li><a href="https://www.sankranti.net/wishes/bengali.html" class="hover:text-white hover:underline transition-colors duration-200">Bengali</a></li>
+          <li><a href="https://www.sankranti.net/wishes/bhojpuri.html" class="hover:text-white hover:underline transition-colors duration-200">Bhojpuri</a></li>
+          <li><a href="https://www.sankranti.net/wishes/bihari.html" class="hover:text-white hover:underline transition-colors duration-200">Bihari</a></li>
+          <li><a href="https://www.sankranti.net/wishes/english.html" class="hover:text-white hover:underline transition-colors duration-200">English</a></li>
+          <li><a href="https://www.sankranti.net/wishes/gujarati.html" class="hover:text-white hover:underline transition-colors duration-200">Gujarati</a></li>
+          <li><a href="https://www.sankranti.net/wishes/hindi.html" class="hover:text-white hover:underline transition-colors duration-200">Hindi</a></li>
+          <li><a href="https://www.sankranti.net/wishes/kannada.html" class="hover:text-white hover:underline transition-colors duration-200">Kannada</a></li>
+          <li><a href="https://www.sankranti.net/wishes/kashmiri.html" class="hover:text-white hover:underline transition-colors duration-200">Kashmiri</a></li>
+          <li><a href="https://www.sankranti.net/wishes/makarsankranti-play-script.html" class="hover:text-white hover:underline transition-colors duration-200">Makarsankranti-play-script</a></li>
+          <li><a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-bengali.html" class="hover:text-white hover:underline transition-colors duration-200">Makarsankranti-wishes-in-bengali</a></li>
+          <li><a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-garhwali.html" class="hover:text-white hover:underline transition-colors duration-200">Makarsankranti-wishes-in-garhwali</a></li>
+          <li><a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-gujrati.html" class="hover:text-white hover:underline transition-colors duration-200">Makarsankranti-wishes-in-gujrati</a></li>
+          <li><a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-hindi.html" class="hover:text-white hover:underline transition-colors duration-200">Makarsankranti-wishes-in-hindi</a></li>
+          <li><a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-marwari-language.html" class="hover:text-white hover:underline transition-colors duration-200">Makarsankranti-wishes-in-marwari-language</a></li>
+          <li><a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-rajasthani.html" class="hover:text-white hover:underline transition-colors duration-200">Makarsankranti-wishes-in-rajasthani</a></li>
+          <li><a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-sanskrit-language.html" class="hover:text-white hover:underline transition-colors duration-200">Makarsankranti-wishes-in-sanskrit-language</a></li>
+          <li><a href="https://www.sankranti.net/wishes/makarsankranti-wishes-in-urdu.html" class="hover:text-white hover:underline transition-colors duration-200">Makarsankranti-wishes-in-urdu</a></li>
+          <li><a href="https://www.sankranti.net/wishes/makarsankranti-wishes-marathai.html" class="hover:text-white hover:underline transition-colors duration-200">Makarsankranti-wishes-marathai</a></li>
+          <li><a href="https://www.sankranti.net/wishes/malyalam.html" class="hover:text-white hover:underline transition-colors duration-200">Malyalam</a></li>
+          <li><a href="https://www.sankranti.net/wishes/marathi.html" class="hover:text-white hover:underline transition-colors duration-200">Marathi</a></li>
+          <li><a href="https://www.sankranti.net/wishes/nepalese.html" class="hover:text-white hover:underline transition-colors duration-200">Nepalese</a></li>
+          <li><a href="https://www.sankranti.net/wishes/punjabi.html" class="hover:text-white hover:underline transition-colors duration-200">Punjabi</a></li>
+          <li><a href="https://www.sankranti.net/wishes/sanskrit.html" class="hover:text-white hover:underline transition-colors duration-200">Sanskrit</a></li>
+          <li><a href="https://www.sankranti.net/wishes/sindhi.html" class="hover:text-white hover:underline transition-colors duration-200">Sindhi</a></li>
+          <li><a href="https://www.sankranti.net/wishes/tamil.html" class="hover:text-white hover:underline transition-colors duration-200">Tamil</a></li>
+          <li><a href="https://www.sankranti.net/wishes/telugu.html" class="hover:text-white hover:underline transition-colors duration-200">Telugu</a></li>
+          <li><a href="https://www.sankranti.net/wishes/urdu.html" class="hover:text-white hover:underline transition-colors duration-200">Urdu</a></li>
+          <li><a href="https://www.sankranti.net/wishes/wishes-new-beginning.html" class="hover:text-white hover:underline transition-colors duration-200">Wishes-new-beginning</a></li>
+          <li><a href="https://www.sankranti.net/wishes/wishes-prosperity.html" class="hover:text-white hover:underline transition-colors duration-200">Wishes-prosperity</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="text-lg font-semibold text-white mb-4">Pages</h5>
+        <ul class="space-y-2">
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/astrological-significance-chhath-puja.html" class="hover:text-white hover:underline transition-colors duration-200">Astrological Significance Chhath Puja</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/can-chhath-puja-be-observed-without-river.html" class="hover:text-white hover:underline transition-colors duration-200">Can Chhath Puja Be Observed Without River</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-2026-dates-calendar.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja 2026 Dates Calendar</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-at-home-guide.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja At Home Guide</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-basket-decoration.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Basket Decoration</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-delhi-ncr-neighborhoods.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Delhi Ncr Neighborhoods</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-diya-traditions.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Diya Traditions</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-during-pregnancy.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja During Pregnancy</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-family-style-guide.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Family Style Guide</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-faqs.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Faqs</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-folk-songs-themes.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Folk Songs Themes</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-for-beginners.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja For Beginners</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-for-children.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja For Children</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-four-days-rituals.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Four Days Rituals</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-ghat-decoration.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Ghat Decoration</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-greetings-gallery.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Greetings Gallery</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-history-culture.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja History Culture</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-home-decoration.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Home Decoration</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-home-ghat-planning.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Home Ghat Planning</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-home-preparation-guide.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Home Preparation Guide</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-images-wallpapers.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Images Wallpapers</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-in-bihar.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja In Bihar</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-in-delhi-ncr.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja In Delhi Ncr</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-in-delhi.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja In Delhi</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-in-gurgaon.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja In Gurgaon</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-in-jharkhand.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja In Jharkhand</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-in-kolkata.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja In Kolkata</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-in-lucknow.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja In Lucknow</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-in-mumbai.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja In Mumbai</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-in-noida-greater-noida.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja In Noida Greater Noida</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-in-patna.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja In Patna</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-in-ranchi.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja In Ranchi</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-in-usa.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja In Usa</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-in-uttar-pradesh.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja In Uttar Pradesh</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-in-varanasi.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja In Varanasi</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-katha-story.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Katha Story</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-mauritius-fiji-caribbean.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Mauritius Fiji Caribbean</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-mehndi-designs.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Mehndi Designs</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-metros-usa-guide.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Metros Usa Guide</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-nature-baskets-sun-festivals.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Nature Baskets Sun Festivals</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-nepal-terai-traditions.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Nepal Terai Traditions</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-offerings-decoration-guide.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Offerings Decoration Guide</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-offerings-symbolism.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Offerings Symbolism</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-outside-india-diaspora.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Outside India Diaspora</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-paran-rules.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Paran Rules</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-participation-home-abroad.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Participation Home Abroad</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-planning-wishes.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Planning Wishes</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-prasad-folk-traditions.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Prasad Folk Traditions</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-prasad-recipes.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Prasad Recipes</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-rangoli-designs.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Rangoli Designs</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-regional-celebrations.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Regional Celebrations</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-regions-diaspora-environment.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Regions Diaspora Environment</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-rice-kaddu-bhaat-ingredients.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Rice Kaddu Bhaat Ingredients</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-rules-outside-bihar.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Rules Outside Bihar</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-samagri-list.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Samagri List</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-samagri-prasad-guide.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Samagri Prasad Guide</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-saree-ideas.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Saree Ideas</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-songs-geet.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Songs Geet</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-thekua-recipe.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Thekua Recipe</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-vrat-purity-meanings.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Vrat Purity Meanings</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-vrat-rules.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Vrat Rules</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-vrat-support-health-evidence.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Vrat Support Health Evidence</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-vs-makar-sankranti.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Vs Makar Sankranti</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-vs-surya-puja.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Vs Surya Puja</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-whatsapp-status-captions.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Whatsapp Status Captions</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-wishes-bhojpuri.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Wishes Bhojpuri</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-wishes-hindi.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Wishes Hindi</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-wishes-maithili.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Wishes Maithili</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-wishes-messages.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Wishes Messages</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/chhath-puja-women-artisans-heritage.html" class="hover:text-white hover:underline transition-colors duration-200">Chhath Puja Women Artisans Heritage</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/cities-homes-greetings.html" class="hover:text-white hover:underline transition-colors duration-200">Cities Homes Greetings</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/common-mistakes-during-chhath.html" class="hover:text-white hover:underline transition-colors duration-200">Common Mistakes During Chhath</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/eco-friendly-chhath-puja.html" class="hover:text-white hover:underline transition-colors duration-200">Eco Friendly Chhath Puja</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/elderly-devotees-chhath-vrat.html" class="hover:text-white hover:underline transition-colors duration-200">Elderly Devotees Chhath Vrat</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/environmental-impact-chhath-puja.html" class="hover:text-white hover:underline transition-colors duration-200">Environmental Impact Chhath Puja</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/faith-community.html" class="hover:text-white hover:underline transition-colors duration-200">Faith Community</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/family-preperation.html" class="hover:text-white hover:underline transition-colors duration-200">Family Preperation</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/first-time-chhath-vrat.html" class="hover:text-white hover:underline transition-colors duration-200">First Time Chhath Vrat</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/four-days-of-chhath-puja.html" class="hover:text-white hover:underline transition-colors duration-200">Four Days Of Chhath Puja</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/health-benefits-chhath-puja-fasting.html" class="hover:text-white hover:underline transition-colors duration-200">Health Benefits Chhath Puja Fasting</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/history-evolution-chhath-puja.html" class="hover:text-white hover:underline transition-colors duration-200">History Evolution Chhath Puja</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/history-origin-significance.html" class="hover:text-white hover:underline transition-colors duration-200">History Origin Significance</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/how-families-prepare-for-chhath.html" class="hover:text-white hover:underline transition-colors duration-200">How Families Prepare For Chhath</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/how-to-celebrate-chhath-puja-at-home.html" class="hover:text-white hover:underline transition-colors duration-200">How To Celebrate Chhath Puja At Home</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/how-to-create-temporary-chhath-ghat.html" class="hover:text-white hover:underline transition-colors duration-200">How To Create Temporary Chhath Ghat</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/how-to-make-thekua-recipe.html" class="hover:text-white hover:underline transition-colors duration-200">How To Make Thekua Recipe</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/how-to-support-vrati-during-fast.html" class="hover:text-white hover:underline transition-colors duration-200">How To Support Vrati During Fast</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/importance-turmeric-ginger-chhath-soop.html" class="hover:text-white hover:underline transition-colors duration-200">Importance Turmeric Ginger Chhath Soop</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/kaddu-bhaat-recipe-nahay-khay.html" class="hover:text-white hover:underline transition-colors duration-200">Kaddu Bhaat Recipe Nahay Khay</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/kasar-recipe-chhath-puja.html" class="hover:text-white hover:underline transition-colors duration-200">Kasar Recipe Chhath Puja</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/kharna-puja-vidhi.html" class="hover:text-white hover:underline transition-colors duration-200">Kharna Puja Vidhi</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/koshi-bharana-tradition-chhath.html" class="hover:text-white hover:underline transition-colors duration-200">Koshi Bharana Tradition Chhath</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/meaning-of-arghya-chhath-puja.html" class="hover:text-white hover:underline transition-colors duration-200">Meaning Of Arghya Chhath Puja</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/nahay-khay-rituals.html" class="hover:text-white hover:underline transition-colors duration-200">Nahay Khay Rituals</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/rasiya-kheer-recipe-chhath.html" class="hover:text-white hover:underline transition-colors duration-200">Rasiya Kheer Recipe Chhath</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/regional-differences-chhath-bihar-up.html" class="hover:text-white hover:underline transition-colors duration-200">Regional Differences Chhath Bihar Up</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/rituals-meanings-questions.html" class="hover:text-white hover:underline transition-colors duration-200">Rituals Meanings Questions</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/role-artisans-daura-soop-chhath.html" class="hover:text-white hover:underline transition-colors duration-200">Role Artisans Daura Soop Chhath</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/role-of-women-chhath-puja.html" class="hover:text-white hover:underline transition-colors duration-200">Role Of Women Chhath Puja</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/sandhya-arghya-evening-offering.html" class="hover:text-white hover:underline transition-colors duration-200">Sandhya Arghya Evening Offering</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/scientific-reasons-behind-chhath.html" class="hover:text-white hover:underline transition-colors duration-200">Scientific Reasons Behind Chhath</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/significance-arwa-chawal-chhath.html" class="hover:text-white hover:underline transition-colors duration-200">Significance Arwa Chawal Chhath</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/significance-daura-soop-chhath.html" class="hover:text-white hover:underline transition-colors duration-200">Significance Daura Soop Chhath</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/significance-sugarcane-coconut-fruits.html" class="hover:text-white hover:underline transition-colors duration-200">Significance Sugarcane Coconut Fruits</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/story-of-chhathi-maiya.html" class="hover:text-white hover:underline transition-colors duration-200">Story Of Chhathi Maiya</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/surya-arghya-mantras-chhath.html" class="hover:text-white hover:underline transition-colors duration-200">Surya Arghya Mantras Chhath</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/traditional-chhath-puja-prasad.html" class="hover:text-white hover:underline transition-colors duration-200">Traditional Chhath Puja Prasad</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/traditional-fruits-offered-during-chhath.html" class="hover:text-white hover:underline transition-colors duration-200">Traditional Fruits Offered During Chhath</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/usha-arghya-morning-offering.html" class="hover:text-white hover:underline transition-colors duration-200">Usha Arghya Morning Offering</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/what-to-wear-chhath-puja.html" class="hover:text-white hover:underline transition-colors duration-200">What To Wear Chhath Puja</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/why-bananas-offered-chhath-puja.html" class="hover:text-white hover:underline transition-colors duration-200">Why Bananas Offered Chhath Puja</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/why-chhath-puja-difficult-vrat.html" class="hover:text-white hover:underline transition-colors duration-200">Why Chhath Puja Difficult Vrat</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/why-chhath-puja-near-rivers.html" class="hover:text-white hover:underline transition-colors duration-200">Why Chhath Puja Near Rivers</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/why-cleanliness-important-chhath.html" class="hover:text-white hover:underline transition-colors duration-200">Why Cleanliness Important Chhath</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/why-coconut-offered-chhath-puja.html" class="hover:text-white hover:underline transition-colors duration-200">Why Coconut Offered Chhath Puja</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/why-garlic-onion-banned-chhath.html" class="hover:text-white hover:underline transition-colors duration-200">Why Garlic Onion Banned Chhath</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/why-rising-sun-worshipped-chhath-puja.html" class="hover:text-white hover:underline transition-colors duration-200">Why Rising Sun Worshipped Chhath Puja</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/why-salt-avoided-chhath-puja.html" class="hover:text-white hover:underline transition-colors duration-200">Why Salt Avoided Chhath Puja</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/why-seasonal-fruits-important-chhath.html" class="hover:text-white hover:underline transition-colors duration-200">Why Seasonal Fruits Important Chhath</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/why-setting-sun-worshipped-chhath-puja.html" class="hover:text-white hover:underline transition-colors duration-200">Why Setting Sun Worshipped Chhath Puja</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/why-sindoor-nose-to-hairline.html" class="hover:text-white hover:underline transition-colors duration-200">Why Sindoor Nose To Hairline</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/why-stand-in-water-chhath-puja.html" class="hover:text-white hover:underline transition-colors duration-200">Why Stand In Water Chhath Puja</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/why-sugarcane-used-chhath-puja.html" class="hover:text-white hover:underline transition-colors duration-200">Why Sugarcane Used Chhath Puja</a></li>
+          <li><a href="https://www.sankranti.net/Hindu-festivals/chhath-puja/why-thekua-offered-chhath-puja.html" class="hover:text-white hover:underline transition-colors duration-200">Why Thekua Offered Chhath Puja</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center text-sm text-gray-400">
+      <p class="text-sm text-gray-400">Pitru Paksha starts from Sep 26 </p>
+    </div>
+
+    <div class="mt-12 border-t border-gray-700 pt-8 flex flex-col items-center justify-between sm:flex-row">
+      <p class="text-sm text-gray-400">&copy; 2026 Sankranti. All rights reserved.</p>
+      
+    </div>
+
+  </div>
+</footer>
